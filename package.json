@@ -1,0 +1,37 @@
+{
+  "name": "quake-map",
+  "version": "1.0.0",
+  "description": "Real-time earthquake map visualization with SvelteKit, Hono.js, and Neon database",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=web",
+    "dev:api": "turbo run dev --filter=api",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,js,svelte,json,md}\"",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:generate": "turbo run db:generate --filter=db",
+    "db:migrate": "turbo run db:migrate --filter=db",
+    "db:studio": "turbo run db:studio --filter=db",
+    "db:seed": "turbo run db:seed --filter=db",
+    "deploy:api": "turbo run deploy --filter=api",
+    "deploy:web": "turbo run deploy --filter=web"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "prettier": "^3.1.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.0"
+  },
+  "packageManager": "pnpm@8.12.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}

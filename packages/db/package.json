@@ -1,0 +1,28 @@
+{
+  "name": "@quake-map/db",
+  "version": "1.0.0",
+  "description": "Database layer with Drizzle ORM for QuakeMap",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "drizzle-kit push:pg",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx src/seed.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.29.0",
+    "postgres": "^3.4.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "drizzle-kit": "^0.20.0",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.0"
+  }
+}
