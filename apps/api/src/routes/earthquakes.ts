@@ -43,8 +43,7 @@ earthquakeRoutes.get('/', async (c) => {
           status: quake.status,
           tsunami: quake.tsunami,
           sig: quake.sig,
-          net: qu
-          ake.net,
+          net: quake.net,
           code: quake.code,
           ids: quake.ids,
           sources: quake.sources,
