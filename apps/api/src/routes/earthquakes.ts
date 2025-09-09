@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { getEarthquakes, getEarthquakeStats } from '@quake-map/db';
-import { EarthquakeQueryParamsSchema, EarthquakeFeatureCollectionSchema, type EarthquakeQueryParams } from '@quake-map/db';
+import { EarthquakeQueryParamsSchema, EarthquakeFeatureCollectionSchema } from '@quake-map/db';
 
 export const earthquakeRoutes = new Hono();
 
@@ -54,7 +54,7 @@ earthquakeRoutes.get('/', async (c) => {
           gap: quake.gap,
           magType: quake.magType,
           type: quake.type,
-          ...quake.properties
+          ...(quake.properties || {})
         },
         geometry: quake.geometry || {
           type: 'Point' as const,
@@ -145,7 +145,7 @@ earthquakeRoutes.get('/:id', async (c) => {
         gap: earthquake.gap,
         magType: earthquake.magType,
         type: earthquake.type,
-        ...earthquake.properties
+        ...(earthquake.properties || {})
       },
       geometry: earthquake.geometry || {
         type: 'Point' as const,
