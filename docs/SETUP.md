@@ -46,7 +46,46 @@ pnpm --version
 node --version
 ```
 
-### 3. Environment Configuration
+### 2.1. Feature-Based Architecture
+The API now uses a feature-based architecture with the following structure:
+```
+apps/api/src/
+├─ features/           # Feature modules
+│  ├─ earthquake/      # Earthquake data management
+│  │  ├─ endpoints/    # API route handlers
+│  │  ├─ queries/      # Database operations
+│  │  ├─ models/       # Type definitions & schemas
+│  │  ├─ events/       # Event listeners
+│  │  └─ bootstrap.ts  # Feature initialization
+│  ├─ health/          # Health check feature
+│  └─ shared/          # Shared components
+├─ middleware/         # Database & other middleware
+├─ schemas/           # Zod validation schemas
+└─ index.ts           # Main application entry
+```
+
+### 3. API Development
+
+#### New Feature-Based Endpoints
+The API now includes both new feature-based endpoints and legacy endpoints for backward compatibility:
+
+**New Endpoints:**
+- `GET /health` - Health check with database status
+- `GET /earthquakes` - Earthquake data with filtering
+- `GET /earthquakes/stats` - Earthquake statistics
+- `GET /earthquakes/{id}` - Individual earthquake details
+- `GET /docs` - Swagger UI documentation
+- `GET /` - OpenAPI specification
+
+**Legacy Endpoints (Backward Compatibility):**
+- `GET /api/health` - Same as `/health`
+- `GET /api/quakes` - Same as `/earthquakes`
+
+#### API Documentation
+- **Swagger UI**: Visit `http://localhost:8787/docs` for interactive API documentation
+- **OpenAPI Spec**: Visit `http://localhost:8787/` for the complete API specification
+
+### 4. Environment Configuration
 
 #### Create Environment Files
 ```bash
@@ -258,6 +297,35 @@ pnpm test:web
 
 # End-to-end testing
 pnpm test:e2e
+```
+
+#### API Testing
+Test the new feature-based endpoints:
+
+```bash
+# Health check
+curl http://localhost:8787/health
+
+# Earthquake data
+curl "http://localhost:8787/earthquakes?minMagnitude=4.0&limit=10"
+
+# Earthquake statistics
+curl http://localhost:8787/earthquakes/stats
+
+# Individual earthquake
+curl http://localhost:8787/earthquakes/1
+
+# API documentation
+curl http://localhost:8787/docs
+```
+
+#### Legacy Endpoint Testing
+```bash
+# Legacy health check
+curl http://localhost:8787/api/health
+
+# Legacy earthquake data
+curl "http://localhost:8787/api/quakes?minMagnitude=4.0&limit=10"
 ```
 
 ### Debugging

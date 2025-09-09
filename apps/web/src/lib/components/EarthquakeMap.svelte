@@ -1,13 +1,12 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
+  import { MapLibre } from 'svelte-maplibre';
   import { earthquakes } from '../stores/earthquakes';
   import type { EarthquakeFeatureCollection } from '@quake-map/db';
 
-  export let mapContainer: HTMLDivElement;
   export let onEarthquakeClick: (earthquake: any) => void = () => {};
 
   let map: any;
-  let maplibregl: any;
   let loading = true;
   let error: string | null = null;
 
@@ -25,44 +24,17 @@
     return Math.max(8, Math.min(24, magnitude * 3));
   };
 
-  onMount(async () => {
-    try {
-      // Dynamic import for MapLibre GL JS
-      const maplibreModule = await import('maplibre-gl');
-      maplibregl = maplibreModule.default || maplibreModule;
-      
-      console.log('MapLibre GL JS loaded successfully');
-      
-      map = new maplibregl.Map({
-        container: mapContainer,
-        style: 'https://demotiles.maplibre.org/style.json',
-        center: [0, 0],
-        zoom: 2
-      });
+  const handleMapLoad = (mapInstance: any) => {
+    map = mapInstance;
+    loading = false;
+    loadEarthquakeData();
+  };
 
-      map.on('load', () => {
-        loading = false;
-        loadEarthquakeData();
-      });
-
-      map.on('error', (e: any) => {
-        error = 'Failed to load map';
-        loading = false;
-        console.error('Map error:', e);
-      });
-
-    } catch (err) {
-      error = 'Failed to initialize map';
-      loading = false;
-      console.error('Map initialization error:', err);
-    }
-  });
-
-  onDestroy(() => {
-    if (map) {
-      map.remove();
-    }
-  });
+  const handleMapError = (e: any) => {
+    error = 'Failed to load map';
+    loading = false;
+    console.error('Map error:', e);
+  };
 
   // Subscribe to earthquake data changes
   const unsubscribe = earthquakes.subscribe((data) => {
@@ -204,7 +176,15 @@
     </div>
   {/if}
   
-  <div bind:this={mapContainer} class="w-full h-full"></div>
+  <MapLibre 
+    center={[0, 0]}
+    zoom={2}
+    class="map-container"
+    standardControls
+    style="https://demotiles.maplibre.org/style.json"
+    on:load={handleMapLoad}
+    on:error={handleMapError}
+  />
 </div>
 
 <style>

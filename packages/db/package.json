@@ -15,7 +15,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "drizzle-orm": "^0.29.0",
+    "drizzle-orm": "^0.32.0",
     "postgres": "^3.4.0",
     "zod": "^4.1.5"
   },

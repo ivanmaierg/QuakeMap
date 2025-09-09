@@ -16,7 +16,7 @@
 	},
 	"dependencies": {
 		"@quake-map/ui": "workspace:*",
-		"maplibre-gl": "^3.6.2"
+		"svelte-maplibre": "^1.2.1"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.0",

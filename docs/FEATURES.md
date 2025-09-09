@@ -4,6 +4,17 @@
 
 ### Backend (Hono + Cloudflare Workers)
 
+#### Feature-Based Architecture
+- **Modular Design**: Self-contained features with endpoints, queries, models, and events
+- **Event-Driven System**: Decoupled communication between features
+- **Type Safety**: Full TypeScript integration with Zod validation
+- **Per-Request Database**: Optimized connections for Cloudflare Workers
+
+#### API Documentation
+- **OpenAPI 3.0 Specification**: Complete API documentation at `GET /`
+- **Swagger UI**: Interactive documentation and testing at `GET /docs`
+- **Type-Safe Endpoints**: Auto-generated TypeScript types from schemas
+
 #### Data Ingestion
 - **Scheduled CRON Job**: Automatically fetch USGS earthquake feed every hour
 - **Data Processing**: Parse GeoJSON and upsert into Neon database
@@ -11,31 +22,58 @@
 - **Rate Limiting**: Respect USGS API limits and implement backoff strategies
 
 #### REST API Endpoints
+
+##### New Feature-Based Endpoints
 ```
-GET /api/quakes
+GET /health
+  Response: Health status with database connection info
+
+GET /earthquakes
   Query Parameters:
   - startDate: ISO date string (optional)
   - endDate: ISO date string (optional)
-  - minMagnitude: number (optional, default: 0)
-  - maxMagnitude: number (optional, default: 10)
+  - minMagnitude: number (optional, 0-10)
+  - maxMagnitude: number (optional, 0-10)
   - bbox: string "minLon,minLat,maxLon,maxLat" (optional)
-  - limit: number (optional, default: 1000)
-  
+  - limit: number (optional, 1-1000, default: 1000)
   Response: GeoJSON FeatureCollection
+
+GET /earthquakes/stats
+  Response: Earthquake statistics and summary data
+
+GET /earthquakes/{id}
+  Path Parameters:
+  - id: string (numeric earthquake ID)
+  Response: Individual earthquake details
 ```
 
-#### Additional Endpoints
-- `GET /api/quakes/stats` - Earthquake statistics and summary data
-- `GET /api/health` - Health check endpoint
-- `GET /api/quakes/{id}` - Individual earthquake details
+##### Legacy Endpoints (Backward Compatibility)
+```
+GET /api/quakes - Same as /earthquakes
+GET /api/health - Same as /health
+```
 
 ### Database (Neon + Drizzle ORM)
 
 #### Data Management
+- **Drizzle ORM v0.32.0**: Type-safe database operations with full TypeScript support
+- **Per-Request Connections**: Optimized for Cloudflare Workers serverless environment
 - **Migrations**: Version-controlled schema changes with Drizzle
 - **Connection Pooling**: Efficient database connections via Neon
-- **Spatial Queries**: PostGIS integration for geographic operations
-- **Data Validation**: Type-safe operations with Drizzle ORM
+- **Spatial Queries**: PostGIS integration for geographic operations (future enhancement)
+- **Data Validation**: Type-safe operations with Drizzle ORM and Zod schemas
+
+#### Database Architecture
+- **Stateless Design**: No global database instances
+- **Scalable**: Each request gets its own connection
+- **Memory Efficient**: Connections created and destroyed per request
+- **Type Safety**: Full TypeScript integration with auto-generated types
+
+#### Event System
+- **Centralized Event Bus**: Mock event emitter for decoupled feature communication
+- **Event Types**: `data:ingested`, `stats:updated`, `earthquake:created`
+- **Feature Listeners**: Each feature can register event handlers
+- **Future Enhancement**: Real event emitter integration when needed
 
 ### Frontend (SvelteKit)
 

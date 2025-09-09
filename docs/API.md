@@ -8,12 +8,77 @@ Production: https://quake-map-api.your-domain.workers.dev
 Development: http://localhost:8787
 ```
 
+### API Documentation
+- **OpenAPI Specification**: `GET /` - Complete API specification in OpenAPI 3.0 format
+- **Swagger UI**: `GET /docs` - Interactive API documentation and testing interface
+
 ### Authentication
 Currently no authentication required. Future versions may include API keys for rate limiting.
 
 ## Core Endpoints
 
-### GET /api/quakes
+### Health Check
+
+#### GET /health
+Check the health status of the API service.
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-15T10:30:00.000Z",
+  "version": "1.0.0",
+  "database": "connected",
+  "uptime": 3600
+}
+```
+
+### Earthquake Data
+
+#### GET /earthquakes
+Retrieve earthquake data with optional filtering (new feature-based endpoint).
+
+**Query Parameters:**
+- `startDate` (optional): ISO date string - Filter earthquakes after this date
+- `endDate` (optional): ISO date string - Filter earthquakes before this date
+- `minMagnitude` (optional): number - Minimum magnitude (0-10)
+- `maxMagnitude` (optional): number - Maximum magnitude (0-10)
+- `bbox` (optional): string - Bounding box "minLon,minLat,maxLon,maxLat"
+- `limit` (optional): number - Maximum number of results (1-1000, default: 1000)
+
+#### GET /earthquakes/stats
+Get earthquake statistics and summary data.
+
+**Response:**
+```json
+{
+  "total_earthquakes": 1500,
+  "last_updated": "2024-01-15T10:30:00.000Z",
+  "magnitude_distribution": {
+    "0-1": 100,
+    "1-2": 200,
+    "2-3": 300,
+    "3-4": 400,
+    "4-5": 300,
+    "5+": 200
+  },
+  "recent_activity": {
+    "last_24h": 15,
+    "last_7d": 85,
+    "last_30d": 350
+  }
+}
+```
+
+#### GET /earthquakes/{id}
+Get earthquake details by ID.
+
+**Path Parameters:**
+- `id` (required): string - Earthquake ID (numeric)
+
+### Legacy Endpoints (Backward Compatibility)
+
+#### GET /api/quakes
 Retrieve earthquake data with optional filtering.
 
 **Query Parameters:**

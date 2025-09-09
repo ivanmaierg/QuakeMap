@@ -7,7 +7,6 @@
   import EarthquakeDetails from '../lib/components/EarthquakeDetails.svelte';
   import { loadEarthquakes, loading, error } from '../lib/stores/earthquakes';
 
-  let mapContainer: HTMLDivElement;
   let selectedEarthquake: any = null;
   let showDetails = false;
 
@@ -67,7 +66,6 @@
     <!-- Map Container -->
     <main class="flex-1 relative">
       <EarthquakeMap 
-        bind:mapContainer={mapContainer} 
         onEarthquakeClick={handleEarthquakeClick}
       />
     </main>
