@@ -94,7 +94,7 @@
 			<Marker
 				lngLat={earthquake.geometry.coordinates}
 				onclick={() => (selectedEarthquake = earthquake)}
-				class="grid place-items-center rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-110 transition-transform {getMagnitudeColor(earthquake.properties.magnitude)} {getMagnitudeSize(earthquake.properties.magnitude)}"
+				class="grid place-items-center rounded-full border-2 border-white shadow-lg cursor-pointer hover:shadow-xl hover:border-4 transition-all duration-200 {getMagnitudeColor(earthquake.properties.magnitude)} {getMagnitudeSize(earthquake.properties.magnitude)}"
 			>
 				<span class="text-white font-bold">
 					{earthquake.properties.magnitude.toFixed(1)}
