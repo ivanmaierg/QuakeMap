@@ -47,7 +47,7 @@ export interface EarthquakeFeatureCollection {
 }
 
 export interface EarthquakeFilters {
-	magnitude?: number;
+	magnitude?: number; // Used as minMagnitude in API calls
 	startDate?: string;
 	endDate?: string;
 	limit?: number;
@@ -75,7 +75,7 @@ const createEarthquakeStore = () => {
 			const params = new URLSearchParams();
 			
 			if (filters.magnitude) {
-				params.append('magnitude', filters.magnitude.toString());
+				params.append('minMagnitude', filters.magnitude.toString());
 			}
 			if (filters.startDate) {
 				params.append('startDate', filters.startDate);

@@ -10,7 +10,7 @@ import type { Env } from '../../../types';
 
 export const earthquakeStatsRoute = createRoute({
   method: 'get',
-  path: '/earthquakes/stats',
+  path: '/quakes/stats',
   tags: ['Earthquakes'],
   summary: 'Get earthquake statistics',
   description: 'Retrieve earthquake statistics and summary data',

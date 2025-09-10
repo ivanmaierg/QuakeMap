@@ -9,7 +9,7 @@ import type { Env } from '../../../types';
 
 export const earthquakeByIdRoute = createRoute({
   method: 'get',
-  path: '/earthquakes/{id}',
+  path: '/quakes/{id}',
   tags: ['Earthquakes'],
   summary: 'Get earthquake by ID',
   description: 'Retrieve details for a specific earthquake by its internal ID',
