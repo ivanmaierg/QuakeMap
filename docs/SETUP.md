@@ -173,7 +173,63 @@ cd apps/api
 wrangler dev
 ```
 
-### 6. Development Server Setup
+### 6. Frontend Setup (SvelteKit + shadcn-svelte)
+
+#### shadcn-svelte Configuration
+The web application is configured with shadcn-svelte for modern UI components:
+
+```bash
+cd apps/web
+
+# Verify shadcn-svelte installation
+npx shadcn-svelte@latest --version
+
+# Add new components as needed
+npx shadcn-svelte@latest add [component-name]
+
+# Example: Add more components
+npx shadcn-svelte@latest add input label select dialog
+```
+
+#### Available shadcn-svelte Components
+The project includes these pre-configured components:
+- **Button**: Various button styles and sizes
+- **Card**: Container components for content organization
+- **Input**: Form input components
+- **Label**: Form label components
+- **Select**: Dropdown selection components
+- **Dialog**: Modal dialog components
+- **Sheet**: Side panel components
+- **Skeleton**: Loading state components
+- **Switch**: Toggle switch components
+- **Toggle**: Toggle button components
+- **Separator**: Visual separator components
+
+#### Component Usage
+```svelte
+<script lang="ts">
+  import { Button } from '$lib/components/ui/button/index.js';
+  import { Card, CardContent, CardHeader, CardTitle } from '$lib/components/ui/card/index.js';
+</script>
+
+<Card>
+  <CardHeader>
+    <CardTitle>Earthquake Data</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <Button>View Details</Button>
+  </CardContent>
+</Card>
+```
+
+#### Theme Configuration
+The project uses the Stone color scheme with dark/light mode support:
+- **Base Color**: Stone
+- **Global CSS**: `src/app.css`
+- **Component Path**: `$lib/components/ui`
+- **Utils Path**: `$lib/utils`
+
+### 7. Development Server Setup
 
 #### Start All Services
 ```bash
@@ -183,7 +239,7 @@ pnpm dev
 
 #### Start Individual Services
 ```bash
-# Frontend only
+# Frontend only (SvelteKit + shadcn-svelte)
 pnpm dev:web
 
 # Backend only
@@ -243,15 +299,25 @@ apps/web/
 ├─ src/
 │  ├─ lib/            # Shared components and utilities
 │  │  ├─ components/  # Reusable Svelte components
-│  │  ├─ stores/      # Svelte stores for state management
-│  │  ├─ utils/       # Utility functions
+│  │  │  └─ ui/       # shadcn-svelte UI components
+│  │  │      ├─ button/
+│  │  │      ├─ card/
+│  │  │      ├─ input/
+│  │  │      ├─ label/
+│  │  │      ├─ select/
+│  │  │      ├─ dialog/
+│  │  │      └─ ...    # Other shadcn-svelte components
+│  │  ├─ hooks/       # Custom Svelte hooks
+│  │  ├─ utils.ts     # Utility functions (shadcn-svelte utils)
 │  │  └─ types/       # TypeScript type definitions
 │  ├─ routes/         # SvelteKit pages and API routes
 │  │  ├─ +layout.svelte
 │  │  ├─ +page.svelte
 │  │  └─ api/         # Server-side API routes
+│  ├─ app.css         # Global styles with shadcn-svelte theme
 │  └─ app.html        # Main HTML template
 ├─ static/            # Static assets
+├─ components.json    # shadcn-svelte configuration
 └─ package.json
 ```
 
