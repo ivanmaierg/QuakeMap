@@ -1,7 +1,11 @@
 name = "quake-map-web"
+main = ".svelte-kit/cloudflare/index.js"
 compatibility_date = "2025-09-06"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = "build"
+
+[assets]
+directory = ".svelte-kit/cloudflare/_app"
+binding = "ASSETS"
 
 [env.development]
 name = "quake-map-web-dev"
