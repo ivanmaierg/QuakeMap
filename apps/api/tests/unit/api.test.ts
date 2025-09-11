@@ -82,7 +82,7 @@ describe('API Basic Tests', () => {
 
   describe('Earthquake endpoints', () => {
     it('should handle earthquakes endpoint (may fail without DB)', async () => {
-      const res = await app.request('/earthquakes', {
+      const res = await app.request('/api/quakes', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ describe('API Basic Tests', () => {
     });
 
     it('should handle earthquake stats endpoint (may fail without DB)', async () => {
-      const res = await app.request('/earthquakes/stats', {
+      const res = await app.request('/api/quakes/stats', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ describe('API Basic Tests', () => {
     });
 
     it('should handle individual earthquake endpoint (may fail without DB)', async () => {
-      const res = await app.request('/earthquakes/1', {
+      const res = await app.request('/api/quakes/1', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -323,7 +323,37 @@ app.doc('/', (c) => ({
 }));
 
 // Swagger UI
-app.get('/docs', swaggerUI({ url: '/' }));
+app.get('/docs', (c) => {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="QuakeMap API Documentation" />
+    <title>QuakeMap API - Swagger UI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css" />
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js" crossorigin="anonymous"></script>
+    <script>
+      window.onload = () => {
+        window.ui = SwaggerUIBundle({
+          url: '/',
+          dom_id: '#swagger-ui',
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIBundle.presets.standalone
+          ],
+          layout: "StandaloneLayout"
+        });
+      }
+    </script>
+  </body>
+</html>`;
+  
+  return c.html(html);
+});
 
 // Bootstrap features
 bootstrapFeatures(app as any, emitter);

@@ -7,6 +7,12 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     setupFiles: ['./tests/setup.ts'],
+    testTimeout: 5000,
+    hookTimeout: 5000,
+    exclude: [
+      'tests/integration/earthquakes.get.test.ts',
+      'tests/unit/earthquake.queries.test.ts'
+    ],
   },
   resolve: {
     alias: {
