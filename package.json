@@ -20,10 +20,13 @@
     "db:migrate": "turbo run db:migrate --filter=db",
     "db:studio": "turbo run db:studio --filter=db",
     "db:seed": "turbo run db:seed --filter=db",
-    "deploy:api": "turbo run deploy --filter=api",
-    "deploy:api:dev": "turbo run deploy:dev --filter=api",
-    "deploy:api:prod": "turbo run deploy:prod --filter=api",
-    "deploy:web": "turbo run deploy --filter=web"
+    "deploy": "turbo run deploy",
+    "deploy:all": "pnpm deploy:api:prod && pnpm deploy:web:prod",
+    "deploy:all:dev": "pnpm deploy:api:dev && pnpm deploy:web:dev",
+    "deploy:api:prod": "cd apps/api && pnpm deploy:prod",
+    "deploy:api:dev": "cd apps/api && pnpm deploy:dev",
+    "deploy:web:prod": "cd apps/web && pnpm deploy:prod",
+    "deploy:web:dev": "cd apps/web && pnpm deploy:dev"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

@@ -3,6 +3,7 @@ import { swaggerUI } from '@hono/swagger-ui';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
+import { secureHeaders } from 'hono/secure-headers';
 // Note: Event emitter will be implemented when needed
 // import { createEventEmitter } from 'hono-event-emitter';
 
@@ -25,7 +26,24 @@ const emitter = {
 } as any;
 
 // Middleware
-app.use('*', cors());
+app.use('*', cors({
+  origin: (origin, c) => {
+    const corsOrigins = c.env?.CORS_ORIGINS || 'http://localhost:5173';
+    const allowedOrigins = corsOrigins.split(',').map((o: string) => o.trim());
+    return allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
+  },
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+}));
+app.use('*', secureHeaders({
+  contentSecurityPolicy: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'", "data:", "https:"],
+  },
+  crossOriginEmbedderPolicy: false, // Disable for API
+}));
 app.use('*', logger());
 app.use('*', prettyJSON());
 

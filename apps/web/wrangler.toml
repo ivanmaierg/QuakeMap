@@ -1,0 +1,20 @@
+name = "quake-map-web"
+main = ".svelte-kit/cloudflare/index.js"
+compatibility_date = "2025-09-06"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".svelte-kit/cloudflare/_app"
+binding = "ASSETS"
+
+[env.development]
+name = "quake-map-web-dev"
+
+[env.development.vars]
+API_URL = "https://quake-map-api-dev.ivanmaierg99.workers.dev"
+
+[env.production]
+name = "quake-map-web"
+
+[env.production.vars]
+API_URL = "https://quake-map-api.ivanmaierg99.workers.dev"
