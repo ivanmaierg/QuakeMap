@@ -1,9 +1,17 @@
 import { and, desc, eq, gte, lte, sql } from 'drizzle-orm';
-import { getDb } from '../client';
+import { getDb, createDbFromEnv, type Database } from '../client';
 import { earthquakes } from '../schema';
 import { EarthquakeFiltersSchema, type EarthquakeFilters, EarthquakeStatsSchema, type EarthquakeStats, EarthquakeSchema, type EarthquakeData } from '../validation/earthquakes';
 
-export const getEarthquakes = async (filters: EarthquakeFilters = {}) => {
+// Overloaded function signatures for different environments
+export async function getEarthquakes(filters?: EarthquakeFilters): Promise<Awaited<ReturnType<Database['select']>>>;
+export async function getEarthquakes(db: Database, filters?: EarthquakeFilters): Promise<Awaited<ReturnType<Database['select']>>>;
+export async function getEarthquakes(dbOrFilters?: Database | EarthquakeFilters, filtersParam?: EarthquakeFilters) {
+  // Determine if first parameter is database or filters
+  const isDatabase = dbOrFilters && typeof dbOrFilters === 'object' && 'select' in dbOrFilters;
+  const db = isDatabase ? dbOrFilters as Database : createDbFromEnv();
+  const filters = isDatabase ? filtersParam || {} : dbOrFilters || {};
+
   // Validate filters with Zod
   const validatedFilters = EarthquakeFiltersSchema.parse(filters);
   
@@ -15,8 +23,6 @@ export const getEarthquakes = async (filters: EarthquakeFilters = {}) => {
     bbox,
     limit = 1000
   } = validatedFilters;
-
-  const db = getDb();
   let query = db.select().from(earthquakes);
 
   const conditions = [];

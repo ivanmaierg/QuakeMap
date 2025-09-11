@@ -1,9 +1,29 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "quake-map-api",
+  "name": "quake-map",
   "main": "apps/api/src/index.ts",
   "compatibility_date": "2025-09-06",
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  "env": {
+    "development": {
+      "name": "quake-map-dev",
+      "vars": {
+        "ENVIRONMENT": "development",
+        "PROJECT_NAME": "QuakeMap API Dev",
+        "USGS_API_URL": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary",
+        "CORS_ORIGINS": "http://localhost:5173,http://localhost:3000"
+      }
+    },
+    "production": {
+      "name": "quake-map",
+      "vars": {
+        "ENVIRONMENT": "production",
+        "PROJECT_NAME": "QuakeMap API",
+        "USGS_API_URL": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary",
+        "CORS_ORIGINS": "https://quake-map.vercel.app,https://quake-map.netlify.app"
+      }
+    }
+  }
 }

@@ -21,6 +21,8 @@
     "db:studio": "turbo run db:studio --filter=db",
     "db:seed": "turbo run db:seed --filter=db",
     "deploy:api": "turbo run deploy --filter=api",
+    "deploy:api:dev": "turbo run deploy:dev --filter=api",
+    "deploy:api:prod": "turbo run deploy:prod --filter=api",
     "deploy:web": "turbo run deploy --filter=web"
   },
   "devDependencies": {
