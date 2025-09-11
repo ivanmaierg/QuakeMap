@@ -10,4 +10,12 @@ declare global {
 	}
 }
 
+// Environment variables
+declare module '$env/dynamic/private' {
+	export const env: {
+		API_URL?: string;
+		[key: string]: string | undefined;
+	};
+}
+
 export {};

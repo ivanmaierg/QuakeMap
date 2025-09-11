@@ -29,7 +29,7 @@ const emitter = {
 app.use('*', cors({
   origin: (origin, c) => {
     const corsOrigins = c.env?.CORS_ORIGINS || 'http://localhost:5173';
-    const allowedOrigins = corsOrigins.split(',').map(o => o.trim());
+    const allowedOrigins = corsOrigins.split(',').map((o: string) => o.trim());
     return allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
   },
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],

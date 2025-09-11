@@ -1,6 +1,6 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { API_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export const GET: RequestHandler = async ({ url, fetch }) => {
 	try {
@@ -8,7 +8,7 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 		const searchParams = url.searchParams;
 		
 		// Forward the request to the backend API
-		const baseUrl = API_URL || 'http://localhost:8787';
+		const baseUrl = env.API_URL || 'http://localhost:8787';
 		const apiUrl = new URL('/earthquakes', baseUrl);
 		
 		// Copy all query parameters to the API request
