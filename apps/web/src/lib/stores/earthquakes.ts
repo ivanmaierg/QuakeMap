@@ -4,7 +4,7 @@ export interface EarthquakeFeature {
 	type: 'Feature';
 	geometry: {
 		type: 'Point';
-		coordinates: [number, number]; // [longitude, latitude]
+		coordinates: [number, number] | [number, number, number]; // [longitude, latitude] or [longitude, latitude, depth]
 	};
 	properties: {
 		id: string;
