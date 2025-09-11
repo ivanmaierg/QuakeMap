@@ -17,4 +17,4 @@ API_URL = "https://quake-map-api-dev.ivanmaierg99.workers.dev"
 name = "quake-map-web"
 
 [env.production.vars]
-API_URL = "https://quake-map.your-subdomain.workers.dev"
+API_URL = "https://quake-map-api.ivanmaierg99.workers.dev"
