@@ -11,7 +11,7 @@ binding = "ASSETS"
 name = "quake-map-web-dev"
 
 [env.development.vars]
-API_URL = "https://quake-map-dev.your-subdomain.workers.dev"
+API_URL = "https://quake-map-api-dev.ivanmaierg99.workers.dev"
 
 [env.production]
 name = "quake-map-web"
