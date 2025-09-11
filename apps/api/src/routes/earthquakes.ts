@@ -1,8 +1,10 @@
 import { Hono } from 'hono';
-import { getEarthquakes, getEarthquakeStats } from '@quake-map/db';
+import { getEarthquakesWithDb, getEarthquakeStatsWithDb } from '@quake-map/db';
 import { EarthquakeQueryParamsSchema, EarthquakeFeatureCollectionSchema } from '@quake-map/db';
+import { getDatabase } from '../middleware/db.middleware';
+import type { Env } from '../types';
 
-export const earthquakeRoutes = new Hono();
+export const earthquakeRoutes = new Hono<Env>();
 
 // Get earthquakes with optional filters
 earthquakeRoutes.get('/', async (c) => {
@@ -19,7 +21,9 @@ earthquakeRoutes.get('/', async (c) => {
     // Validate query parameters with Zod
     const validatedParams = EarthquakeQueryParamsSchema.parse(queryParams);
 
-    const earthquakes = await getEarthquakes(validatedParams);
+    // Get database connection from middleware
+    const db = getDatabase(c);
+    const earthquakes = await getEarthquakesWithDb(db, validatedParams);
 
     const response = {
       type: 'FeatureCollection' as const,
@@ -89,7 +93,8 @@ earthquakeRoutes.get('/', async (c) => {
 // Get earthquake statistics
 earthquakeRoutes.get('/stats', async (c) => {
   try {
-    const stats = await getEarthquakeStats();
+    const db = getDatabase(c);
+    const stats = await getEarthquakeStatsWithDb(db);
     return c.json(stats);
   } catch (error) {
     console.error('Error fetching earthquake stats:', error);
@@ -107,7 +112,8 @@ earthquakeRoutes.get('/:id', async (c) => {
       return c.json({ error: 'Invalid earthquake ID' }, 400);
     }
 
-    const earthquakes = await getEarthquakes({ limit: 1000 });
+    const db = getDatabase(c);
+    const earthquakes = await getEarthquakesWithDb(db, { limit: 1000 });
     const earthquake = earthquakes.find(q => q.id === id);
 
     if (!earthquake) {

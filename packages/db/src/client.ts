@@ -33,7 +33,7 @@ export const createDbFromEnv = () => {
 let _defaultDb: ReturnType<typeof getDb> | null = null;
 
 export const db = new Proxy({} as ReturnType<typeof getDb>, {
-  get(target, prop) {
+  get(_target, prop) {
     if (!_defaultDb) {
       _defaultDb = createDbFromEnv();
     }

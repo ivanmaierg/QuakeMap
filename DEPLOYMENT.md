@@ -10,21 +10,15 @@ The project supports two environments:
 
 ## Environment Variables
 
-Both environments require the `DATABASE_URL` environment variable to be set as a secret in Cloudflare Workers.
+Both environments require the `DATABASE_URL` environment variable to be configured in the wrangler.jsonc files.
 
 ### Setting Up Environment Variables
 
-1. **For Development Environment:**
-   ```bash
-   # Set the DATABASE_URL secret for development
-   wrangler secret put DATABASE_URL --env development
-   ```
+1. **Update Development Environment:**
+   Edit `apps/api/wrangler.jsonc` and replace `postgresql://your-dev-db-connection-string` with your actual development database URL.
 
-2. **For Production Environment:**
-   ```bash
-   # Set the DATABASE_URL secret for production  
-   wrangler secret put DATABASE_URL --env production
-   ```
+2. **Update Production Environment:**
+   Edit `apps/api/wrangler.jsonc` and replace `postgresql://your-prod-db-connection-string` with your actual production database URL.
 
 ## Deployment Commands
 
@@ -90,29 +84,32 @@ pnpm dev:prod
 
 ## Database Setup
 
-Make sure to set up your database connection string as a secret:
+Make sure to configure your database connection string in the wrangler configuration:
 
 1. Get your Neon database connection string
-2. Set it as a secret for the appropriate environment:
+2. Update the appropriate environment in `apps/api/wrangler.jsonc`:
 
-```bash
-# For development
-wrangler secret put DATABASE_URL --env development
-# Enter your development database URL when prompted
-
-# For production
-wrangler secret put DATABASE_URL --env production
-# Enter your production database URL when prompted
+```jsonc
+{
+  "env": {
+    "development": {
+      "vars": {
+        "DATABASE_URL": "postgresql://your-actual-dev-connection-string"
+      }
+    },
+    "production": {
+      "vars": {
+        "DATABASE_URL": "postgresql://your-actual-prod-connection-string"
+      }
+    }
+  }
+}
 ```
 
 ## Troubleshooting
 
 ### Database Connection Error
-If you see `DATABASE_URL or NEON_DATABASE_URL environment variable is required`, make sure you've set the DATABASE_URL secret:
-
-```bash
-wrangler secret put DATABASE_URL --env production
-```
+If you see `DATABASE_URL or NEON_DATABASE_URL environment variable is required`, make sure you've updated the DATABASE_URL in your `apps/api/wrangler.jsonc` file for the appropriate environment.
 
 ### Worker Name Mismatch
 If you see a worker name mismatch warning, it's expected when deploying from CI/CD. The system will use the correct name based on your configuration.
