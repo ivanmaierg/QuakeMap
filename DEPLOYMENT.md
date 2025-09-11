@@ -97,7 +97,7 @@ pnpm dev:prod
 |---------|-------------|------------|
 | Worker Name | `quake-map-dev` | `quake-map` |
 | API Name | `quake-map-api-dev` | `quake-map-api` |
-| CORS Origins | `http://localhost:5173,http://localhost:3000` | `https://quake-map.vercel.app,https://quake-map.netlify.app` |
+| CORS Origins | `http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173` | `https://quake-map-web-dev.pages.dev,https://quake-map-web.pages.dev` |
 | Environment | `development` | `production` |
 | Project Name | `QuakeMap API Dev` | `QuakeMap API` |
 
@@ -135,11 +135,24 @@ If you see a worker name mismatch warning, it's expected when deploying from CI/
 
 ## CI/CD Integration
 
-For automated deployments, make sure to:
+The project includes GitHub Actions for automated deployment. To set up CI/CD:
 
-1. Set the `DATABASE_URL` secret in your Cloudflare Workers dashboard
-2. Use the appropriate deployment command for your target environment
-3. The CI system will automatically use the production environment if no environment is specified
+1. **Set up GitHub Secrets:**
+   - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token with Workers and Pages permissions
+   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID
+
+2. **Environment Variables:**
+   - Set `DATABASE_URL` as a secret in your Cloudflare Workers dashboard for both environments
+
+3. **Branch Strategy:**
+   - `main` branch: Deploys to development environment
+   - `production` branch: Deploys to production environment
+
+4. **Workflow Features:**
+   - Runs tests and linting before deployment
+   - Builds both API and web app
+   - Deploys API first, then web app
+   - Supports both development and production environments
 
 ## Next Steps
 
