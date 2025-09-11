@@ -64,12 +64,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       
+      - name: Build API
+        run: cd apps/api && pnpm build
+      
       - name: Deploy API to Development
         if: github.ref == 'refs/heads/main'
         run: cd apps/api && pnpm deploy:dev
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL_DEV }}
       
       - name: Deploy API to Production
         if: github.ref == 'refs/heads/production'
@@ -77,6 +81,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL_PROD }}
 
   deploy-web:
     runs-on: ubuntu-latest
@@ -104,6 +109,7 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          API_URL: ${{ secrets.API_URL_DEV }}
       
       - name: Deploy Web to Production
         if: github.ref == 'refs/heads/production'
@@ -111,3 +117,4 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          API_URL: ${{ secrets.API_URL_PROD }}
