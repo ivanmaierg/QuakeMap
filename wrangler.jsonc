@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "quake-map-api",
+  "main": "apps/api/src/index.ts",
+  "compatibility_date": "2025-09-06",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
