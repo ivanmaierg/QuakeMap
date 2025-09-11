@@ -51,7 +51,7 @@ quake-map/
 - **Runtime**: Node.js 18+ with TypeScript
 - **Package Manager**: pnpm with workspaces
 - **Build System**: Turborepo for monorepo management
-- **Frontend**: SvelteKit + Tailwind CSS + MapLibre GL JS
+- **Frontend**: SvelteKit + Tailwind CSS + shadcn-svelte + MapLibre GL JS
 - **Backend**: Hono.js + Cloudflare Workers
 - **Database**: Neon PostgreSQL + Drizzle ORM
 - **Deployment**: Cloudflare Workers + Vercel/Netlify
@@ -143,9 +143,11 @@ graph TB
 - ESLint and Prettier configurations
 
 ### Apps/Web (Frontend)
-- SvelteKit for application framework
-- Tailwind CSS for styling
-- MapLibre GL JS for map visualization
+- **SvelteKit 2.22.0** for application framework with TypeScript support
+- **Tailwind CSS 4.0.0** for utility-first styling with JIT compilation
+- **shadcn-svelte 1.0.7** for beautiful, accessible UI components
+- **MapLibre GL JS** for high-performance map visualization
+- **Svelte 5.0.0** with modern reactive features
 - Shared UI components from packages/ui
 
 ### Apps/API (Backend)

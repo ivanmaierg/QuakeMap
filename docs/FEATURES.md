@@ -75,7 +75,14 @@ GET /api/health - Same as /health
 - **Feature Listeners**: Each feature can register event handlers
 - **Future Enhancement**: Real event emitter integration when needed
 
-### Frontend (SvelteKit)
+### Frontend (SvelteKit + shadcn-svelte)
+
+#### Modern UI Framework
+- **SvelteKit 2.22.0**: Full-stack framework with TypeScript support
+- **Svelte 5.0.0**: Modern reactive framework with enhanced performance
+- **shadcn-svelte 1.0.7**: Beautiful, accessible UI component library
+- **Tailwind CSS 4.0.0**: Utility-first styling with JIT compilation
+- **Component Architecture**: Modular, reusable UI components
 
 #### Map Visualization
 - **MapLibre GL JS**: High-performance vector map rendering
@@ -84,11 +91,13 @@ GET /api/health - Same as /health
 - **Responsive Design**: Mobile-first approach with touch gestures
 
 #### User Interface Components
+- **shadcn-svelte Components**: Pre-built accessible components (Button, Card, Input, etc.)
 - **Earthquake Markers**: Color-coded by magnitude with custom icons
 - **Tooltips**: Rich information display on hover/click
-- **Filter Panel**: Real-time filtering with sliders and date pickers
-- **Statistics Dashboard**: Summary cards with key metrics
+- **Filter Panel**: Real-time filtering with shadcn-svelte form components
+- **Statistics Dashboard**: Summary cards with shadcn-svelte Card components
 - **Loading States**: Skeleton screens and progress indicators
+- **Theme Support**: Built-in dark/light mode with shadcn-svelte theming
 
 #### State Management
 - **Svelte Stores**: Reactive state for map data and filters

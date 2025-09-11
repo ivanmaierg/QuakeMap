@@ -12,9 +12,9 @@ export const earthquakeBootstrap = (app: OpenAPIHono, emitter: AppEmitter) => {
   emitter.on('earthquake:created', earthquakeCreatedListener);
 
   // Register routes
-  app.get('/earthquakes', getEarthquakes);
-  app.get('/earthquakes/stats', getEarthquakeStats);
-  app.get('/earthquakes/:id', getEarthquakeById);
+  app.get('/quakes', getEarthquakes);
+  app.get('/quakes/stats', getEarthquakeStats);
+  app.get('/quakes/:id', getEarthquakeById);
 
   console.log('✅ Earthquake feature bootstrapped');
 };

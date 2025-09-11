@@ -7,10 +7,11 @@ Build a real-time map visualization application that displays recent earthquakes
 ### 🎓 Learning Objectives
 
 Master the integration of:
-- **Frontend**: SvelteKit (UI, pages, client-side interactivity)
+- **Frontend**: SvelteKit with shadcn-svelte components (UI, pages, client-side interactivity)
 - **Backend**: Hono.js API running on Cloudflare Workers
 - **Database**: Neon (serverless Postgres) with Drizzle ORM
 - **Architecture**: Turborepo monorepo structure & shared packages
+- **UI Components**: shadcn-svelte for beautiful, accessible components
 - **Visualization**: MapLibre GL JS for rendering GeoJSON earthquake data
 - **Data Source**: USGS Earthquake GeoJSON Feed (free, updated hourly)
 
@@ -64,7 +65,7 @@ pnpm db:studio    # Open Drizzle Studio
 - **Runtime**: Node.js 18+ with TypeScript
 - **Package Manager**: pnpm with workspaces
 - **Build System**: Turborepo for monorepo management
-- **Frontend**: SvelteKit + Tailwind CSS + MapLibre GL JS
+- **Frontend**: SvelteKit + Tailwind CSS + shadcn-svelte + MapLibre GL JS
 - **Backend**: Hono.js + Cloudflare Workers
 - **Database**: Neon PostgreSQL + Drizzle ORM
 - **Deployment**: Cloudflare Workers + Vercel/Netlify
@@ -73,6 +74,7 @@ pnpm db:studio    # Open Drizzle Studio
 
 ### Documentation
 - [SvelteKit Documentation](https://kit.svelte.dev/)
+- [shadcn-svelte Documentation](https://www.shadcn-svelte.com/)
 - [Hono.js Guide](https://hono.dev/)
 - [Drizzle ORM Documentation](https://orm.drizzle.team/)
 - [MapLibre GL JS](https://maplibre.org/maplibre-gl-js-docs/)

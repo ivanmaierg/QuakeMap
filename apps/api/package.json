@@ -2,8 +2,11 @@
   "name": "api",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev --port 8787",
-    "deploy": "wrangler deploy --minify",
+    "dev": "wrangler dev --port 8787 --env development",
+    "dev:prod": "wrangler dev --port 8787 --env production",
+    "deploy": "wrangler deploy --minify --env production",
+    "deploy:dev": "wrangler deploy --minify --env development",
+    "deploy:prod": "wrangler deploy --minify --env production",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings",
     "build": "tsc",
     "lint": "eslint .",

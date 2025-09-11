@@ -1,80 +1,86 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { Button } from '@quake-map/ui';
-  import EarthquakeMap from '../lib/components/EarthquakeMap.svelte';
-  import EarthquakeFilters from '../lib/components/EarthquakeFilters.svelte';
-  import EarthquakeStats from '../lib/components/EarthquakeStats.svelte';
-  import EarthquakeDetails from '../lib/components/EarthquakeDetails.svelte';
-  import { loadEarthquakes, loading, error } from '../lib/stores/earthquakes';
-
-  let selectedEarthquake: any = null;
-  let showDetails = false;
-
-  onMount(async () => {
-    // Load initial earthquake data
-    await loadEarthquakes();
-  });
-
-  const handleEarthquakeClick = (earthquake: any) => {
-    selectedEarthquake = earthquake;
-    showDetails = true;
-  };
-
-  const handleCloseDetails = () => {
-    showDetails = false;
-    selectedEarthquake = null;
-  };
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '$lib/components/ui/card/index.js';
 </script>
 
-<svelte:head>
-  <title>QuakeMap - Real-time Earthquake Visualization</title>
-  <meta name="description" content="Real-time earthquake map visualization with interactive filtering and statistics" />
-</svelte:head>
+<div class="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+	<div class="container mx-auto px-4 py-16">
+		<!-- Hero Section -->
+		<div class="text-center mb-16">
+			<h1 class="text-6xl font-bold text-slate-900 dark:text-slate-100 mb-6">
+				QuakeMap
+			</h1>
+			<p class="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
+				Real-time earthquake monitoring and visualization platform built with SvelteKit and shadcn-svelte
+			</p>
+			<div class="flex gap-4 justify-center">
+				<a href="/map">
+					<Button size="lg" class="px-8">
+						View Earthquake Map
+					</Button>
+				</a>
+				<Button variant="outline" size="lg" class="px-8">
+					Learn More
+				</Button>
+			</div>
+		</div>
 
-<div class="h-screen flex flex-col">
-  <!-- Header -->
-  <header class="bg-white shadow-sm border-b border-secondary-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <div class="flex items-center">
-          <h1 class="text-2xl font-bold text-primary-600">🌎 QuakeMap</h1>
-        </div>
-        <nav class="flex space-x-4">
-          <Button variant="outline" size="sm">About</Button>
-          <Button variant="primary" size="sm">Settings</Button>
-        </nav>
-      </div>
-    </div>
-  </header>
+		<!-- Features Grid -->
+		<div class="grid md:grid-cols-3 gap-8 mb-16">
+			<Card class="p-6 hover:shadow-lg transition-shadow">
+				<CardHeader>
+					<CardTitle class="text-xl">Real-time Data</CardTitle>
+					<CardDescription>
+						Live earthquake data from around the world
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<p class="text-slate-600 dark:text-slate-400">
+						Get instant updates on seismic activity with our real-time monitoring system.
+					</p>
+				</CardContent>
+			</Card>
 
-  <!-- Main Content -->
-  <div class="flex-1 flex">
-    <!-- Sidebar -->
-    <aside class="w-80 bg-white shadow-lg border-r border-gray-200 p-4 overflow-y-auto">
-      <div class="space-y-6">
-        <!-- Statistics -->
-        <EarthquakeStats />
+			<Card class="p-6 hover:shadow-lg transition-shadow">
+				<CardHeader>
+					<CardTitle class="text-xl">Interactive Maps</CardTitle>
+					<CardDescription>
+						Visualize earthquakes on interactive maps
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<p class="text-slate-600 dark:text-slate-400">
+						Explore earthquake locations, magnitudes, and patterns with our interactive mapping tools.
+					</p>
+				</CardContent>
+			</Card>
 
-        <!-- Filters -->
-        <div class="bg-white border border-gray-200 rounded-lg p-4">
-          <h2 class="text-lg font-semibold mb-4">Filters</h2>
-          <EarthquakeFilters />
-        </div>
-      </div>
-    </aside>
+			<Card class="p-6 hover:shadow-lg transition-shadow">
+				<CardHeader>
+					<CardTitle class="text-xl">Modern UI</CardTitle>
+					<CardDescription>
+						Built with shadcn-svelte components
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					<p class="text-slate-600 dark:text-slate-400">
+						Beautiful, accessible, and responsive interface powered by modern design systems.
+					</p>
+				</CardContent>
+			</Card>
+		</div>
 
-    <!-- Map Container -->
-    <main class="flex-1 relative">
-      <EarthquakeMap 
-        onEarthquakeClick={handleEarthquakeClick}
-      />
-    </main>
-  </div>
-
-  <!-- Earthquake Details Modal -->
-  <EarthquakeDetails 
-    bind:earthquake={selectedEarthquake}
-    bind:isOpen={showDetails}
-    on:close={handleCloseDetails}
-  />
+		<!-- Tech Stack -->
+		<div class="text-center">
+			<h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-8">
+				Built with Modern Technologies
+			</h2>
+			<div class="flex flex-wrap justify-center gap-4">
+				<Button variant="secondary" class="px-6">SvelteKit</Button>
+				<Button variant="secondary" class="px-6">TypeScript</Button>
+				<Button variant="secondary" class="px-6">Tailwind CSS</Button>
+				<Button variant="secondary" class="px-6">shadcn-svelte</Button>
+			</div>
+		</div>
+	</div>
 </div>

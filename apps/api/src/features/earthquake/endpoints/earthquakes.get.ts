@@ -9,7 +9,7 @@ import type { Env } from '../../../types';
 
 export const earthquakesRoute = createRoute({
   method: 'get',
-  path: '/earthquakes',
+  path: '/quakes',
   tags: ['Earthquakes'],
   summary: 'Get earthquakes with optional filtering',
   description: 'Retrieve earthquake data with optional filtering by date, magnitude, and location',
