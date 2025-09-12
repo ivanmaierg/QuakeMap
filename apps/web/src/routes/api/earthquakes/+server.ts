@@ -16,6 +16,9 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 			apiUrl.searchParams.set(key, value);
 		});
 
+		console.log('🌐 Web app proxy - API_URL:', baseUrl);
+		console.log('🌐 Web app proxy - Full API URL:', apiUrl.toString());
+
 		const response = await fetch(apiUrl.toString());
 		
 		if (!response.ok) {
