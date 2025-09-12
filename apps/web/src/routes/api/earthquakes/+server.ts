@@ -21,7 +21,11 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 		console.log('🌐 Web app proxy - Platform env keys:', Object.keys(platform?.env || {}));
 		console.log('🌐 Web app proxy - Platform env API_URL:', platform?.env?.API_URL);
 
-		const response = await fetch(apiUrl.toString());
+		const response = await fetch(apiUrl.toString(), {
+			headers: {
+				'Origin': 'https://quake-map-web-dev.ivanmaierg99.workers.dev'
+			}
+		});
 		
 		if (!response.ok) {
 			throw new Error(`API request failed: ${response.status}`);
