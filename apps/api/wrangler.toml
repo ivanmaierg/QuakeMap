@@ -7,7 +7,6 @@ compatibility_flags = ["nodejs_compat"]
 name = "quake-map-api-dev"
 
 [env.development.vars]
-DATABASE_URL = "postgresql://your-dev-db-connection-string"
 ENVIRONMENT = "development"
 PROJECT_NAME = "QuakeMap API Dev"
 USGS_API_URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
@@ -17,7 +16,6 @@ CORS_ORIGINS = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:517
 name = "quake-map-api"
 
 [env.production.vars]
-DATABASE_URL = "postgresql://your-prod-db-connection-string"
 ENVIRONMENT = "production"
 PROJECT_NAME = "QuakeMap API"
 USGS_API_URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
