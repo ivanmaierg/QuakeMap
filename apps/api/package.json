@@ -14,7 +14,10 @@
     "test:coverage": "vitest run --coverage",
     "deploy": "wrangler deploy --env production",
     "deploy:dev": "wrangler deploy --env development",
-    "deploy:prod": "wrangler deploy --env production"
+    "deploy:prod": "wrangler deploy --env production",
+    "logs": "wrangler tail --env development",
+    "logs:prod": "wrangler tail --env production",
+    "logs:dev": "wrangler tail --env development --format=pretty"
   },
   "dependencies": {
     "@hono/swagger-ui": "^0.4.0",

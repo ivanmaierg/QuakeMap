@@ -3,6 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2025-09-06"
 compatibility_flags = ["nodejs_compat"]
 
+# Enable logging
+[observability]
+enabled = true
+
 [env.development]
 name = "quake-map-api-dev"
 
