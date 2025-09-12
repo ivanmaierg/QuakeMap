@@ -1,0 +1,326 @@
+﻿2025-09-12T03:01:57.0646976Z Current runner version: '2.328.0'
+2025-09-12T03:01:57.0671603Z ##[group]Runner Image Provisioner
+2025-09-12T03:01:57.0672403Z Hosted Compute Agent
+2025-09-12T03:01:57.0672909Z Version: 20250829.383
+2025-09-12T03:01:57.0673814Z Commit: 27cb235aab5b0e52e153a26cd86b4742e89dac5d
+2025-09-12T03:01:57.0674494Z Build Date: 2025-08-29T13:48:48Z
+2025-09-12T03:01:57.0675070Z ##[endgroup]
+2025-09-12T03:01:57.0675740Z ##[group]Operating System
+2025-09-12T03:01:57.0676276Z Ubuntu
+2025-09-12T03:01:57.0676749Z 24.04.3
+2025-09-12T03:01:57.0677268Z LTS
+2025-09-12T03:01:57.0677737Z ##[endgroup]
+2025-09-12T03:01:57.0678194Z ##[group]Runner Image
+2025-09-12T03:01:57.0678842Z Image: ubuntu-24.04
+2025-09-12T03:01:57.0679324Z Version: 20250907.24.1
+2025-09-12T03:01:57.0680336Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250907.24/images/ubuntu/Ubuntu2404-Readme.md
+2025-09-12T03:01:57.0681899Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250907.24
+2025-09-12T03:01:57.0682875Z ##[endgroup]
+2025-09-12T03:01:57.0684347Z ##[group]GITHUB_TOKEN Permissions
+2025-09-12T03:01:57.0686123Z Contents: read
+2025-09-12T03:01:57.0686769Z Metadata: read
+2025-09-12T03:01:57.0687303Z Packages: read
+2025-09-12T03:01:57.0687767Z ##[endgroup]
+2025-09-12T03:01:57.0690044Z Secret source: Actions
+2025-09-12T03:01:57.0690736Z Prepare workflow directory
+2025-09-12T03:01:57.1018737Z Prepare all required actions
+2025-09-12T03:01:57.1056549Z Getting action download info
+2025-09-12T03:01:57.4782281Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-09-12T03:01:57.6656061Z Download action repository 'pnpm/action-setup@v2' (SHA:eae0cfeb286e66ffb5155f1a79b90583a127a68b)
+2025-09-12T03:01:58.0961953Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2025-09-12T03:01:58.3607896Z Complete job name: build
+2025-09-12T03:01:58.4485726Z ##[group]Run actions/checkout@v4
+2025-09-12T03:01:58.4488101Z with:
+2025-09-12T03:01:58.4489337Z   repository: ivanmaierg/QuakeMap
+2025-09-12T03:01:58.4490790Z   token: ***
+2025-09-12T03:01:58.4492076Z   ssh-strict: true
+2025-09-12T03:01:58.4493319Z   ssh-user: git
+2025-09-12T03:01:58.4494310Z   persist-credentials: true
+2025-09-12T03:01:58.4495810Z   clean: true
+2025-09-12T03:01:58.4496983Z   sparse-checkout-cone-mode: true
+2025-09-12T03:01:58.4498120Z   fetch-depth: 1
+2025-09-12T03:01:58.4498892Z   fetch-tags: false
+2025-09-12T03:01:58.4500030Z   show-progress: true
+2025-09-12T03:01:58.4500930Z   lfs: false
+2025-09-12T03:01:58.4502127Z   submodules: false
+2025-09-12T03:01:58.4504986Z   set-safe-directory: true
+2025-09-12T03:01:58.4506833Z ##[endgroup]
+2025-09-12T03:01:58.5592516Z Syncing repository: ivanmaierg/QuakeMap
+2025-09-12T03:01:58.5595339Z ##[group]Getting Git version info
+2025-09-12T03:01:58.5596755Z Working directory is '/home/runner/work/QuakeMap/QuakeMap'
+2025-09-12T03:01:58.5598696Z [command]/usr/bin/git version
+2025-09-12T03:01:58.5664180Z git version 2.51.0
+2025-09-12T03:01:58.5690064Z ##[endgroup]
+2025-09-12T03:01:58.5705023Z Temporarily overriding HOME='/home/runner/work/_temp/9f2f2787-70ac-46ac-89eb-c1525b558bb7' before making global git config changes
+2025-09-12T03:01:58.5708517Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-12T03:01:58.5716525Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:01:58.5750429Z Deleting the contents of '/home/runner/work/QuakeMap/QuakeMap'
+2025-09-12T03:01:58.5754174Z ##[group]Initializing the repository
+2025-09-12T03:01:58.5757798Z [command]/usr/bin/git init /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:01:58.5849508Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-09-12T03:01:58.5852555Z hint: is subject to change. To configure the initial branch name to use in all
+2025-09-12T03:01:58.5856002Z hint: of your new repositories, which will suppress this warning, call:
+2025-09-12T03:01:58.5857661Z hint:
+2025-09-12T03:01:58.5859071Z hint: 	git config --global init.defaultBranch <name>
+2025-09-12T03:01:58.5860223Z hint:
+2025-09-12T03:01:58.5861270Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-09-12T03:01:58.5863111Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-09-12T03:01:58.5865278Z hint:
+2025-09-12T03:01:58.5866007Z hint: 	git branch -m <name>
+2025-09-12T03:01:58.5866837Z hint:
+2025-09-12T03:01:58.5867964Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-09-12T03:01:58.5869830Z Initialized empty Git repository in /home/runner/work/QuakeMap/QuakeMap/.git/
+2025-09-12T03:01:58.5872791Z [command]/usr/bin/git remote add origin https://github.com/ivanmaierg/QuakeMap
+2025-09-12T03:01:58.5901413Z ##[endgroup]
+2025-09-12T03:01:58.5902733Z ##[group]Disabling automatic garbage collection
+2025-09-12T03:01:58.5904749Z [command]/usr/bin/git config --local gc.auto 0
+2025-09-12T03:01:58.5932861Z ##[endgroup]
+2025-09-12T03:01:58.5934282Z ##[group]Setting up auth
+2025-09-12T03:01:58.5939166Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-12T03:01:58.5968346Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-12T03:01:58.6290746Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-12T03:01:58.6326222Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-12T03:01:58.6544169Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-09-12T03:01:58.6579025Z ##[endgroup]
+2025-09-12T03:01:58.6581497Z ##[group]Fetching the repository
+2025-09-12T03:01:58.6599649Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5eb3d9ebb638555015aec2c26e4b48723753d903:refs/remotes/origin/feature/fix-ci-deployments
+2025-09-12T03:01:58.9342156Z From https://github.com/ivanmaierg/QuakeMap
+2025-09-12T03:01:58.9344842Z  * [new ref]         5eb3d9ebb638555015aec2c26e4b48723753d903 -> origin/feature/fix-ci-deployments
+2025-09-12T03:01:58.9384307Z ##[endgroup]
+2025-09-12T03:01:58.9386497Z ##[group]Determining the checkout info
+2025-09-12T03:01:58.9388938Z ##[endgroup]
+2025-09-12T03:01:58.9392280Z [command]/usr/bin/git sparse-checkout disable
+2025-09-12T03:01:58.9432696Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-09-12T03:01:58.9460397Z ##[group]Checking out the ref
+2025-09-12T03:01:58.9463971Z [command]/usr/bin/git checkout --progress --force -B feature/fix-ci-deployments refs/remotes/origin/feature/fix-ci-deployments
+2025-09-12T03:01:58.9579971Z Switched to a new branch 'feature/fix-ci-deployments'
+2025-09-12T03:01:58.9583561Z branch 'feature/fix-ci-deployments' set up to track 'origin/feature/fix-ci-deployments'.
+2025-09-12T03:01:58.9589604Z ##[endgroup]
+2025-09-12T03:01:58.9620947Z [command]/usr/bin/git log -1 --format=%H
+2025-09-12T03:01:58.9642516Z 5eb3d9ebb638555015aec2c26e4b48723753d903
+2025-09-12T03:01:58.9875889Z ##[group]Run pnpm/action-setup@v2
+2025-09-12T03:01:58.9876823Z with:
+2025-09-12T03:01:58.9877457Z   version: 8
+2025-09-12T03:01:58.9878144Z   dest: ~/setup-pnpm
+2025-09-12T03:01:58.9878876Z   run_install: null
+2025-09-12T03:01:58.9879639Z   package_json_file: package.json
+2025-09-12T03:01:58.9880523Z   standalone: false
+2025-09-12T03:01:58.9881235Z ##[endgroup]
+2025-09-12T03:01:59.0759677Z ##[group]Running self-installer...
+2025-09-12T03:01:59.5908512Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-09-12T03:01:59.5996543Z Packages: +1
+2025-09-12T03:01:59.5997374Z +
+2025-09-12T03:02:00.2116580Z Packages are hard linked from the content-addressable store to the virtual store.
+2025-09-12T03:02:00.2121137Z   Content-addressable store is at: /home/runner/.local/share/pnpm/store/v3
+2025-09-12T03:02:00.2123963Z   Virtual store is at:             node_modules/.pnpm
+2025-09-12T03:02:00.2320564Z 
+2025-09-12T03:02:00.2321275Z dependencies:
+2025-09-12T03:02:00.2322737Z + pnpm 8.15.9 (10.15.1 is available)
+2025-09-12T03:02:00.2324109Z 
+2025-09-12T03:02:00.2347657Z Done in 991ms
+2025-09-12T03:02:00.5918033Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2025-09-12T03:02:00.6068318Z ##[endgroup]
+2025-09-12T03:02:00.6072438Z Installation Completed!
+2025-09-12T03:02:00.6223158Z ##[group]Run actions/setup-node@v4
+2025-09-12T03:02:00.6223613Z with:
+2025-09-12T03:02:00.6224139Z   node-version: 20
+2025-09-12T03:02:00.6224550Z   cache: pnpm
+2025-09-12T03:02:00.6224890Z   always-auth: false
+2025-09-12T03:02:00.6225249Z   check-latest: false
+2025-09-12T03:02:00.6225772Z   token: ***
+2025-09-12T03:02:00.6226073Z env:
+2025-09-12T03:02:00.6226509Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:00.6227008Z ##[endgroup]
+2025-09-12T03:02:00.7978172Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2025-09-12T03:02:00.7984672Z ##[group]Environment details
+2025-09-12T03:02:03.6394884Z node: v20.19.5
+2025-09-12T03:02:03.6395595Z npm: 10.8.2
+2025-09-12T03:02:03.6396129Z yarn: 1.22.22
+2025-09-12T03:02:03.6397418Z ##[endgroup]
+2025-09-12T03:02:03.6419215Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2025-09-12T03:02:04.2385603Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
+2025-09-12T03:02:04.3707765Z Cache hit for: node-cache-Linux-x64-pnpm-148296499a7ccf7c7cb5b4b0cb173791c2ed9fa5f856c8bad733eca58707cd71
+2025-09-12T03:02:05.4976601Z Received 125829120 of 139246344 (90.4%), 119.9 MBs/sec
+2025-09-12T03:02:05.8124596Z Received 139246344 of 139246344 (100.0%), 100.9 MBs/sec
+2025-09-12T03:02:05.8126469Z Cache Size: ~133 MB (139246344 B)
+2025-09-12T03:02:05.8234260Z [command]/usr/bin/tar -xf /home/runner/work/_temp/f063d3c5-21f3-47fb-bfaf-901515f57809/cache.tzst -P -C /home/runner/work/QuakeMap/QuakeMap --use-compress-program unzstd
+2025-09-12T03:02:07.1904776Z Cache restored successfully
+2025-09-12T03:02:07.2216852Z Cache restored from key: node-cache-Linux-x64-pnpm-148296499a7ccf7c7cb5b4b0cb173791c2ed9fa5f856c8bad733eca58707cd71
+2025-09-12T03:02:07.2419567Z ##[group]Run pnpm install --frozen-lockfile
+2025-09-12T03:02:07.2420072Z [36;1mpnpm install --frozen-lockfile[0m
+2025-09-12T03:02:07.2561815Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:02:07.2562099Z env:
+2025-09-12T03:02:07.2562356Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:07.2562674Z ##[endgroup]
+2025-09-12T03:02:07.6718148Z Scope: all 6 workspace projects
+2025-09-12T03:02:07.7502422Z Lockfile is up to date, resolution step is skipped
+2025-09-12T03:02:07.8327455Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-09-12T03:02:07.9310861Z Packages: +502
+2025-09-12T03:02:07.9312393Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2025-09-12T03:02:08.8342323Z Progress: resolved 502, reused 502, downloaded 0, added 501
+2025-09-12T03:02:08.8499993Z Progress: resolved 502, reused 502, downloaded 0, added 502, done
+2025-09-12T03:02:09.0933601Z .../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:09.0938479Z .../esbuild@0.19.12/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:09.0940922Z .../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:09.0943614Z .../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:09.1017125Z .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:09.1600002Z .../esbuild@0.25.4/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:09.1734988Z .../esbuild@0.19.12/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:09.1735884Z .../esbuild@0.25.9/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:09.1744158Z .../esbuild@0.21.5/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:09.1924055Z .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:09.3880856Z 
+2025-09-12T03:02:09.3881385Z devDependencies:
+2025-09-12T03:02:09.3881805Z + @types/node 20.19.13
+2025-09-12T03:02:09.3882337Z + prettier 3.6.2
+2025-09-12T03:02:09.3882784Z + turbo 1.13.4
+2025-09-12T03:02:09.3883162Z + typescript 5.9.2
+2025-09-12T03:02:09.3883500Z + wrangler 4.34.0
+2025-09-12T03:02:09.3883960Z 
+2025-09-12T03:02:09.4199355Z apps/web prepare$ svelte-kit sync || echo ''
+2025-09-12T03:02:11.3059813Z apps/web prepare: Done
+2025-09-12T03:02:11.3162181Z Done in 4s
+2025-09-12T03:02:11.3479645Z ##[group]Run cd apps/web && pnpm prepare
+2025-09-12T03:02:11.3479995Z [36;1mcd apps/web && pnpm prepare[0m
+2025-09-12T03:02:11.3510099Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:02:11.3510334Z env:
+2025-09-12T03:02:11.3510573Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:11.3510855Z ##[endgroup]
+2025-09-12T03:02:11.7327354Z 
+2025-09-12T03:02:11.7328229Z > web@0.0.1 prepare /home/runner/work/QuakeMap/QuakeMap/apps/web
+2025-09-12T03:02:11.7329002Z > svelte-kit sync || echo ''
+2025-09-12T03:02:11.7329295Z 
+2025-09-12T03:02:13.2551563Z ##[group]Run pnpm build
+2025-09-12T03:02:13.2552010Z [36;1mpnpm build[0m
+2025-09-12T03:02:13.2595090Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:02:13.2595500Z env:
+2025-09-12T03:02:13.2595925Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:13.2596460Z ##[endgroup]
+2025-09-12T03:02:13.6462991Z 
+2025-09-12T03:02:13.6464119Z > quake-map@1.0.0 build /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:02:13.6464783Z > turbo run build
+2025-09-12T03:02:13.6464967Z 
+2025-09-12T03:02:13.6879706Z 
+2025-09-12T03:02:13.6880110Z Attention:
+2025-09-12T03:02:13.6880885Z Turborepo now collects completely anonymous telemetry regarding usage.
+2025-09-12T03:02:13.6881781Z This information is used to shape the Turborepo roadmap and prioritize features.
+2025-09-12T03:02:13.6882704Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2025-09-12T03:02:13.6883804Z https://turbo.build/repo/docs/telemetry
+2025-09-12T03:02:13.6884082Z 
+2025-09-12T03:02:13.7208716Z • Packages in scope: @quake-map/config, @quake-map/db, @quake-map/ui, api, web
+2025-09-12T03:02:13.7209711Z • Running build in 5 packages
+2025-09-12T03:02:13.7210777Z • Remote caching disabled
+2025-09-12T03:02:14.3382546Z ##[group]@quake-map/ui:build
+2025-09-12T03:02:14.3383514Z cache miss, executing bfa240d5c1de11e7
+2025-09-12T03:02:14.3391876Z 
+2025-09-12T03:02:14.3392461Z > @quake-map/ui@1.0.0 build /home/runner/work/QuakeMap/QuakeMap/packages/ui
+2025-09-12T03:02:14.3393205Z > echo 'UI package built'
+2025-09-12T03:02:14.3393486Z 
+2025-09-12T03:02:14.3393887Z UI package built
+2025-09-12T03:02:14.3394541Z ##[endgroup]
+2025-09-12T03:02:17.1742792Z ##[group]@quake-map/db:build
+2025-09-12T03:02:17.1744962Z cache miss, executing 06a65998caa26c24
+2025-09-12T03:02:17.1746417Z 
+2025-09-12T03:02:17.1747217Z > @quake-map/db@1.0.0 build /home/runner/work/QuakeMap/QuakeMap/packages/db
+2025-09-12T03:02:17.1747819Z > tsc
+2025-09-12T03:02:17.1747985Z 
+2025-09-12T03:02:17.1748403Z ##[endgroup]
+2025-09-12T03:02:22.1297398Z ##[group]api:build
+2025-09-12T03:02:22.1299464Z cache miss, executing 90f05ba9c8d3add0
+2025-09-12T03:02:22.1299866Z 
+2025-09-12T03:02:22.1300231Z > api@ build /home/runner/work/QuakeMap/QuakeMap/apps/api
+2025-09-12T03:02:22.1300746Z > tsc
+2025-09-12T03:02:22.1300913Z 
+2025-09-12T03:02:22.1301283Z ##[endgroup]
+2025-09-12T03:02:27.3024896Z ##[group]web:build
+2025-09-12T03:02:27.3025520Z cache miss, executing 92106ee2d4f872b5
+2025-09-12T03:02:27.3025857Z 
+2025-09-12T03:02:27.3026261Z > web@0.0.1 build /home/runner/work/QuakeMap/QuakeMap/apps/web
+2025-09-12T03:02:27.3026816Z > vite build
+2025-09-12T03:02:27.3027010Z 
+2025-09-12T03:02:27.3027752Z [36mvite v7.1.4 [32mbuilding SSR bundle for production...[36m[39m
+2025-09-12T03:02:27.3028787Z transforming...
+2025-09-12T03:02:27.3029544Z [32m✓[39m 228 modules transformed.
+2025-09-12T03:02:27.3030323Z rendering chunks...
+2025-09-12T03:02:27.3031013Z [36mvite v7.1.4 [32mbuilding for production...[36m[39m
+2025-09-12T03:02:27.3031540Z transforming...
+2025-09-12T03:02:27.3032121Z [32m✓[39m 196 modules transformed.
+2025-09-12T03:02:27.3032601Z rendering chunks...
+2025-09-12T03:02:27.3033003Z computing gzip size...
+2025-09-12T03:02:27.3034486Z [2m.svelte-kit/output/client/[22m[32m_app/version.json                       [39m[1m[2m  0.03 kB[22m[1m[22m[2m │ gzip:   0.05 kB[22m
+2025-09-12T03:02:27.3036035Z [2m.svelte-kit/output/client/[22m[32m.vite/manifest.json                     [39m[1m[2m  4.46 kB[22m[1m[22m[2m │ gzip:   0.81 kB[22m
+2025-09-12T03:02:27.3037152Z [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/0.WB4ZIRQt.css    [39m[1m[2m 36.83 kB[22m[1m[22m[2m │ gzip:   7.11 kB[22m
+2025-09-12T03:02:27.3038188Z [2m.svelte-kit/output/client/[22m[35m_app/immutable/assets/3.DD4ockQ6.css    [39m[1m[2m 69.40 kB[22m[1m[22m[2m │ gzip:   9.99 kB[22m
+2025-09-12T03:02:27.3039515Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/CczvfdY-.js       [39m[1m[2m  0.04 kB[22m[1m[22m[2m │ gzip:   0.06 kB[22m
+2025-09-12T03:02:27.3040564Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/DsnmJJEf.js       [39m[1m[2m  0.07 kB[22m[1m[22m[2m │ gzip:   0.08 kB[22m
+2025-09-12T03:02:27.3042155Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/start.DhkAxEnT.js  [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:   0.09 kB[22m
+2025-09-12T03:02:27.3044110Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/Bb3r6Etd.js       [39m[1m[2m  0.39 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+2025-09-12T03:02:27.3045333Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/CwMvHW_r.js       [39m[1m[2m  0.51 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+2025-09-12T03:02:27.3046339Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/nodes/1.BB0-IYLO.js      [39m[1m[2m  0.58 kB[22m[1m[22m[2m │ gzip:   0.35 kB[22m
+2025-09-12T03:02:27.3047369Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/BR_o2mYY.js       [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+2025-09-12T03:02:27.3048356Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/nodes/0.BfRB3HOP.js      [39m[1m[2m  2.83 kB[22m[1m[22m[2m │ gzip:   1.23 kB[22m
+2025-09-12T03:02:27.3049349Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/p92Mcr-C.js       [39m[1m[2m  2.93 kB[22m[1m[22m[2m │ gzip:   1.58 kB[22m
+2025-09-12T03:02:27.3050344Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/Ct8rhsj7.js       [39m[1m[2m  2.95 kB[22m[1m[22m[2m │ gzip:   1.51 kB[22m
+2025-09-12T03:02:27.3051325Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/nodes/2.Br-mHnT6.js      [39m[1m[2m  3.96 kB[22m[1m[22m[2m │ gzip:   1.28 kB[22m
+2025-09-12T03:02:27.3052315Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/entry/app.CSCGTQQ6.js    [39m[1m[2m  5.81 kB[22m[1m[22m[2m │ gzip:   2.75 kB[22m
+2025-09-12T03:02:27.3053344Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/UA-M-heG.js       [39m[1m[2m  6.17 kB[22m[1m[22m[2m │ gzip:   2.87 kB[22m
+2025-09-12T03:02:27.3054631Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/4MdrJGcs.js       [39m[1m[2m 24.30 kB[22m[1m[22m[2m │ gzip:   9.73 kB[22m
+2025-09-12T03:02:27.3055646Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/DXByfaxH.js       [39m[1m[2m 31.53 kB[22m[1m[22m[2m │ gzip:  12.35 kB[22m
+2025-09-12T03:02:27.3056637Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/chunks/C8uC-rqY.js       [39m[1m[2m 55.99 kB[22m[1m[22m[2m │ gzip:  13.65 kB[22m
+2025-09-12T03:02:27.3057628Z [2m.svelte-kit/output/client/[22m[36m_app/immutable/nodes/3.BE35Zaua.js      [39m[1m[33m987.21 kB[39m[22m[2m │ gzip: 270.82 kB[22m
+2025-09-12T03:02:27.3058139Z [33m
+2025-09-12T03:02:27.3058485Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2025-09-12T03:02:27.3059108Z - Using dynamic import() to code-split the application
+2025-09-12T03:02:27.3059890Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2025-09-12T03:02:27.3060737Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2025-09-12T03:02:27.3061178Z [32m✓ built in 4.00s[39m
+2025-09-12T03:02:27.3061821Z [2m.svelte-kit/output/server/[22m[32m.vite/manifest.json                              [39m[1m[2m  4.27 kB[22m[1m[22m
+2025-09-12T03:02:27.3062718Z [2m.svelte-kit/output/server/[22m[35m_app/immutable/assets/_layout.WB4ZIRQt.css       [39m[1m[2m 36.83 kB[22m[1m[22m
+2025-09-12T03:02:27.3063824Z [2m.svelte-kit/output/server/[22m[35m_app/immutable/assets/_page.DD4ockQ6.css         [39m[1m[2m 69.40 kB[22m[1m[22m
+2025-09-12T03:02:27.3064729Z [2m.svelte-kit/output/server/[22m[36mchunks/false.js                                  [39m[1m[2m  0.05 kB[22m[1m[22m
+2025-09-12T03:02:27.3065699Z [2m.svelte-kit/output/server/[22m[36mchunks/shared-server.js                          [39m[1m[2m  0.28 kB[22m[1m[22m
+2025-09-12T03:02:27.3066524Z [2m.svelte-kit/output/server/[22m[36minternal.js                                      [39m[1m[2m  0.38 kB[22m[1m[22m
+2025-09-12T03:02:27.3067332Z [2m.svelte-kit/output/server/[22m[36mchunks/environment.js                            [39m[1m[2m  0.58 kB[22m[1m[22m
+2025-09-12T03:02:27.3068230Z [2m.svelte-kit/output/server/[22m[36mentries/endpoints/api/earthquakes/_server.ts.js  [39m[1m[2m  0.92 kB[22m[1m[22m
+2025-09-12T03:02:27.3069109Z [2m.svelte-kit/output/server/[22m[36mchunks/utils.js                                  [39m[1m[2m  1.15 kB[22m[1m[22m
+2025-09-12T03:02:27.3069949Z [2m.svelte-kit/output/server/[22m[36mentries/fallbacks/error.svelte.js                [39m[1m[2m  1.30 kB[22m[1m[22m
+2025-09-12T03:02:27.3070812Z [2m.svelte-kit/output/server/[22m[36mchunks/index.js                                  [39m[1m[2m  1.43 kB[22m[1m[22m
+2025-09-12T03:02:27.3071660Z [2m.svelte-kit/output/server/[22m[36mentries/pages/_layout.svelte.js                  [39m[1m[2m  2.81 kB[22m[1m[22m
+2025-09-12T03:02:27.3072516Z [2m.svelte-kit/output/server/[22m[36mchunks/exports.js                                [39m[1m[2m  5.47 kB[22m[1m[22m
+2025-09-12T03:02:27.3073334Z [2m.svelte-kit/output/server/[22m[36mchunks/card-title.js                             [39m[1m[2m  5.57 kB[22m[1m[22m
+2025-09-12T03:02:27.3074391Z [2m.svelte-kit/output/server/[22m[36mentries/pages/_page.svelte.js                    [39m[1m[2m  6.07 kB[22m[1m[22m
+2025-09-12T03:02:27.3075243Z [2m.svelte-kit/output/server/[22m[36mremote-entry.js                                  [39m[1m[2m 11.06 kB[22m[1m[22m
+2025-09-12T03:02:27.3076072Z [2m.svelte-kit/output/server/[22m[36mchunks/internal.js                               [39m[1m[2m 15.95 kB[22m[1m[22m
+2025-09-12T03:02:27.3076891Z [2m.svelte-kit/output/server/[22m[36mchunks/shared.js                                 [39m[1m[2m 16.46 kB[22m[1m[22m
+2025-09-12T03:02:27.3077745Z [2m.svelte-kit/output/server/[22m[36mentries/pages/map/_page.svelte.js                [39m[1m[2m 42.01 kB[22m[1m[22m
+2025-09-12T03:02:27.3078701Z [2m.svelte-kit/output/server/[22m[36mchunks/index2.js                                 [39m[1m[2m 55.88 kB[22m[1m[22m
+2025-09-12T03:02:27.3080354Z [2m.svelte-kit/output/server/[22m[36mindex.js                                         [39m[1m[2m141.41 kB[22m[1m[22m
+2025-09-12T03:02:27.3080862Z [32m✓ built in 9.38s[39m
+2025-09-12T03:02:27.3081024Z 
+2025-09-12T03:02:27.3081253Z Run npm run preview to preview your production build locally.
+2025-09-12T03:02:27.3081500Z 
+2025-09-12T03:02:27.3081645Z > Using @sveltejs/adapter-cloudflare
+2025-09-12T03:02:27.3081922Z   ✔ done
+2025-09-12T03:02:27.3082375Z ##[endgroup]
+2025-09-12T03:02:27.3082514Z 
+2025-09-12T03:02:27.3082820Z  Tasks:    4 successful, 4 total
+2025-09-12T03:02:27.3083090Z Cached:    0 cached, 4 total
+2025-09-12T03:02:27.3083324Z   Time:    13.61s 
+2025-09-12T03:02:27.3083453Z 
+2025-09-12T03:02:27.4589865Z Post job cleanup.
+2025-09-12T03:02:27.6080441Z Cache hit occurred on the primary key node-cache-Linux-x64-pnpm-148296499a7ccf7c7cb5b4b0cb173791c2ed9fa5f856c8bad733eca58707cd71, not saving cache.
+2025-09-12T03:02:27.6169606Z Post job cleanup.
+2025-09-12T03:02:27.7038048Z Pruning is unnecessary.
+2025-09-12T03:02:27.7148243Z Post job cleanup.
+2025-09-12T03:02:27.8170411Z [command]/usr/bin/git version
+2025-09-12T03:02:27.8220943Z git version 2.51.0
+2025-09-12T03:02:27.8276836Z Temporarily overriding HOME='/home/runner/work/_temp/9d89ff10-1549-427f-9818-0e5173c55803' before making global git config changes
+2025-09-12T03:02:27.8278294Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-12T03:02:27.8284315Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:02:27.8331041Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-12T03:02:27.8368744Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-12T03:02:27.8618305Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-12T03:02:27.8640405Z http.https://github.com/.extraheader
+2025-09-12T03:02:27.8657182Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-09-12T03:02:27.8692709Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-12T03:02:27.9039332Z Cleaning up orphan processes

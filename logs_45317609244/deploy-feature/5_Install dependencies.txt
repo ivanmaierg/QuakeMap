@@ -1,0 +1,34 @@
+﻿2025-09-12T03:02:48.8670447Z ##[group]Run pnpm install --frozen-lockfile
+2025-09-12T03:02:48.8670938Z [36;1mpnpm install --frozen-lockfile[0m
+2025-09-12T03:02:48.8819637Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:02:48.8819973Z env:
+2025-09-12T03:02:48.8820236Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:48.8820553Z ##[endgroup]
+2025-09-12T03:02:49.3291211Z Scope: all 6 workspace projects
+2025-09-12T03:02:49.4015172Z Lockfile is up to date, resolution step is skipped
+2025-09-12T03:02:49.4823309Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2025-09-12T03:02:49.5909650Z Packages: +502
+2025-09-12T03:02:49.5910615Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2025-09-12T03:02:50.4831199Z Progress: resolved 502, reused 502, downloaded 0, added 501
+2025-09-12T03:02:50.5724916Z Progress: resolved 502, reused 502, downloaded 0, added 502, done
+2025-09-12T03:02:50.8279492Z .../esbuild@0.25.4/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:50.8284056Z .../esbuild@0.25.9/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:50.8287230Z .../esbuild@0.21.5/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:50.8289665Z .../esbuild@0.19.12/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:50.8291584Z .../esbuild@0.18.20/node_modules/esbuild postinstall$ node install.js
+2025-09-12T03:02:50.9044341Z .../esbuild@0.25.4/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:50.9058185Z .../esbuild@0.25.9/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:50.9289547Z .../esbuild@0.21.5/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:50.9520468Z .../esbuild@0.18.20/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:50.9639729Z .../esbuild@0.19.12/node_modules/esbuild postinstall: Done
+2025-09-12T03:02:51.1619972Z 
+2025-09-12T03:02:51.1625003Z devDependencies:
+2025-09-12T03:02:51.1627511Z + @types/node 20.19.13
+2025-09-12T03:02:51.1630014Z + prettier 3.6.2
+2025-09-12T03:02:51.1637356Z + turbo 1.13.4
+2025-09-12T03:02:51.1642961Z + typescript 5.9.2
+2025-09-12T03:02:51.1643440Z + wrangler 4.34.0
+2025-09-12T03:02:51.1643676Z 
+2025-09-12T03:02:51.1969577Z apps/web prepare$ svelte-kit sync || echo ''
+2025-09-12T03:02:53.1483492Z apps/web prepare: Done
+2025-09-12T03:02:53.1602309Z Done in 4.2s

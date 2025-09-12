@@ -1,0 +1,41 @@
+﻿2025-09-12T03:03:18.0943788Z ##[group]Run cd apps/web && pnpm deploy:dev
+2025-09-12T03:03:18.0944147Z [36;1mcd apps/web && pnpm deploy:dev[0m
+2025-09-12T03:03:18.0974237Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:03:18.0974489Z env:
+2025-09-12T03:03:18.0974735Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:03:18.0975247Z   CLOUDFLARE_API_TOKEN: ***
+2025-09-12T03:03:18.0975562Z   CLOUDFLARE_ACCOUNT_ID: ***
+2025-09-12T03:03:18.0975904Z   API_URL: ***
+2025-09-12T03:03:18.0976102Z ##[endgroup]
+2025-09-12T03:03:18.4976138Z 
+2025-09-12T03:03:18.4976992Z > web@0.0.1 deploy:dev /home/runner/work/QuakeMap/QuakeMap/apps/web
+2025-09-12T03:03:18.4977568Z > wrangler deploy --env development
+2025-09-12T03:03:18.4977775Z 
+2025-09-12T03:03:19.1162571Z 
+2025-09-12T03:03:19.1163575Z  ⛅️ wrangler 4.34.0 (update available 4.35.0)
+2025-09-12T03:03:19.1164189Z ─────────────────────────────────────────────
+2025-09-12T03:03:19.9345991Z 🌀 Building list of assets...
+2025-09-12T03:03:19.9361596Z ✨ Read 29 files from the assets directory /home/runner/work/QuakeMap/QuakeMap/apps/web/.svelte-kit/cloudflare/_app
+2025-09-12T03:03:19.9512225Z 🌀 Starting asset upload...
+2025-09-12T03:03:21.4897461Z 🌀 Found 5 new or modified static assets to upload. Proceeding with upload...
+2025-09-12T03:03:21.4898435Z + /_app/version.json
+2025-09-12T03:03:21.4899341Z + /_app/immutable/entry/app.gzq723H8.js
+2025-09-12T03:03:21.4899989Z + /_app/immutable/entry/start.D8c6t9jx.js
+2025-09-12T03:03:21.4901542Z + /_app/immutable/chunks/CTxo9rDw.js
+2025-09-12T03:03:21.4903468Z + /_app/immutable/nodes/1.XznYFAjL.js
+2025-09-12T03:03:22.6134158Z Uploaded 1 of 5 assets
+2025-09-12T03:03:22.7344315Z Uploaded 3 of 5 assets
+2025-09-12T03:03:23.0275377Z Uploaded 5 of 5 assets
+2025-09-12T03:03:23.0277214Z ✨ Success! Uploaded 5 files (16 already uploaded) (1.54 sec)
+2025-09-12T03:03:23.0277782Z 
+2025-09-12T03:03:23.0779918Z Total Upload: 1971.07 KiB / gzip: 407.28 KiB
+2025-09-12T03:03:26.9041896Z Worker Startup Time: 16 ms
+2025-09-12T03:03:26.9050801Z Your Worker has access to the following bindings:
+2025-09-12T03:03:26.9051589Z Binding                                                       Resource                  
+2025-09-12T03:03:26.9052420Z env.ASSETS                                                    Assets                    
+2025-09-12T03:03:26.9053189Z env.API_URL ("https://quake-map-api-dev.ivanmaierg9...")      Environment Variable      
+2025-09-12T03:03:26.9053570Z 
+2025-09-12T03:03:26.9080013Z Uploaded quake-map-web-dev (7.48 sec)
+2025-09-12T03:03:27.3653918Z Deployed quake-map-web-dev triggers (0.46 sec)
+2025-09-12T03:03:27.3654890Z   https://quake-map-web-dev.ivanmaierg99.workers.dev
+2025-09-12T03:03:27.3655812Z Current Version ID: 601f25b4-e4a8-4593-8490-4c453151ad7a

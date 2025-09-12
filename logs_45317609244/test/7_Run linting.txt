@@ -1,0 +1,32 @@
+﻿2025-09-12T03:01:47.3840118Z ##[group]Run pnpm lint
+2025-09-12T03:01:47.3840408Z [36;1mpnpm lint[0m
+2025-09-12T03:01:47.3870140Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:01:47.3870384Z env:
+2025-09-12T03:01:47.3870623Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:01:47.3870909Z ##[endgroup]
+2025-09-12T03:01:47.7679210Z 
+2025-09-12T03:01:47.7680004Z > quake-map@1.0.0 lint /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:01:47.7680638Z > turbo run lint
+2025-09-12T03:01:47.7680859Z 
+2025-09-12T03:01:47.8400758Z • Packages in scope: @quake-map/config, @quake-map/db, @quake-map/ui, api, web
+2025-09-12T03:01:47.8401795Z • Running lint in 5 packages
+2025-09-12T03:01:47.8402494Z • Remote caching disabled
+2025-09-12T03:01:49.3786407Z ##[group]web:lint
+2025-09-12T03:01:49.3788820Z cache miss, executing 644de8b53419337c
+2025-09-12T03:01:49.3796659Z 
+2025-09-12T03:01:49.3797407Z > web@0.0.1 lint /home/runner/work/QuakeMap/QuakeMap/apps/web
+2025-09-12T03:01:49.3798283Z > eslint src/ --ext .ts,.js
+2025-09-12T03:01:49.3799655Z 
+2025-09-12T03:01:49.3800121Z ##[endgroup]
+2025-09-12T03:01:50.6814642Z ##[group]api:lint
+2025-09-12T03:01:50.6815440Z cache miss, executing b5dcd0668a52557c
+2025-09-12T03:01:50.6815779Z 
+2025-09-12T03:01:50.6816124Z > api@ lint /home/runner/work/QuakeMap/QuakeMap/apps/api
+2025-09-12T03:01:50.6816657Z > eslint src/ --ext .ts
+2025-09-12T03:01:50.6816889Z 
+2025-09-12T03:01:50.6817243Z ##[endgroup]
+2025-09-12T03:01:50.6825831Z 
+2025-09-12T03:01:50.6826097Z  Tasks:    2 successful, 2 total
+2025-09-12T03:01:50.6826563Z Cached:    0 cached, 2 total
+2025-09-12T03:01:50.6826913Z   Time:    2.869s 
+2025-09-12T03:01:50.6827054Z 

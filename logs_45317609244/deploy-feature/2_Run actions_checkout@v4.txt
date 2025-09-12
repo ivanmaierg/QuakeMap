@@ -1,0 +1,69 @@
+﻿2025-09-12T03:02:38.3244823Z ##[group]Run actions/checkout@v4
+2025-09-12T03:02:38.3245811Z with:
+2025-09-12T03:02:38.3246340Z   repository: ivanmaierg/QuakeMap
+2025-09-12T03:02:38.3247147Z   token: ***
+2025-09-12T03:02:38.3247602Z   ssh-strict: true
+2025-09-12T03:02:38.3248058Z   ssh-user: git
+2025-09-12T03:02:38.3248525Z   persist-credentials: true
+2025-09-12T03:02:38.3249038Z   clean: true
+2025-09-12T03:02:38.3249509Z   sparse-checkout-cone-mode: true
+2025-09-12T03:02:38.3250057Z   fetch-depth: 1
+2025-09-12T03:02:38.3250500Z   fetch-tags: false
+2025-09-12T03:02:38.3250966Z   show-progress: true
+2025-09-12T03:02:38.3251438Z   lfs: false
+2025-09-12T03:02:38.3251888Z   submodules: false
+2025-09-12T03:02:38.3252594Z   set-safe-directory: true
+2025-09-12T03:02:38.3253422Z ##[endgroup]
+2025-09-12T03:02:38.4358924Z Syncing repository: ivanmaierg/QuakeMap
+2025-09-12T03:02:38.4360969Z ##[group]Getting Git version info
+2025-09-12T03:02:38.4361891Z Working directory is '/home/runner/work/QuakeMap/QuakeMap'
+2025-09-12T03:02:38.4363157Z [command]/usr/bin/git version
+2025-09-12T03:02:38.4426597Z git version 2.51.0
+2025-09-12T03:02:38.4454031Z ##[endgroup]
+2025-09-12T03:02:38.4469229Z Temporarily overriding HOME='/home/runner/work/_temp/52588523-dc6e-466c-baf5-d2e03db9b4a8' before making global git config changes
+2025-09-12T03:02:38.4470784Z Adding repository directory to the temporary git global config as a safe directory
+2025-09-12T03:02:38.4482851Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:02:38.4522333Z Deleting the contents of '/home/runner/work/QuakeMap/QuakeMap'
+2025-09-12T03:02:38.4526649Z ##[group]Initializing the repository
+2025-09-12T03:02:38.4530582Z [command]/usr/bin/git init /home/runner/work/QuakeMap/QuakeMap
+2025-09-12T03:02:38.4632325Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-09-12T03:02:38.4634245Z hint: is subject to change. To configure the initial branch name to use in all
+2025-09-12T03:02:38.4635896Z hint: of your new repositories, which will suppress this warning, call:
+2025-09-12T03:02:38.4637270Z hint:
+2025-09-12T03:02:38.4637886Z hint: 	git config --global init.defaultBranch <name>
+2025-09-12T03:02:38.4638538Z hint:
+2025-09-12T03:02:38.4639157Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-09-12T03:02:38.4640115Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-09-12T03:02:38.4640867Z hint:
+2025-09-12T03:02:38.4641407Z hint: 	git branch -m <name>
+2025-09-12T03:02:38.4642501Z hint:
+2025-09-12T03:02:38.4643284Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-09-12T03:02:38.4644383Z Initialized empty Git repository in /home/runner/work/QuakeMap/QuakeMap/.git/
+2025-09-12T03:02:38.4648986Z [command]/usr/bin/git remote add origin https://github.com/ivanmaierg/QuakeMap
+2025-09-12T03:02:38.4686809Z ##[endgroup]
+2025-09-12T03:02:38.4691834Z ##[group]Disabling automatic garbage collection
+2025-09-12T03:02:38.4693349Z [command]/usr/bin/git config --local gc.auto 0
+2025-09-12T03:02:38.4724069Z ##[endgroup]
+2025-09-12T03:02:38.4725580Z ##[group]Setting up auth
+2025-09-12T03:02:38.4732560Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-09-12T03:02:38.4767399Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-09-12T03:02:38.5088054Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-09-12T03:02:38.5124964Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-09-12T03:02:38.5357234Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-09-12T03:02:38.5394124Z ##[endgroup]
+2025-09-12T03:02:38.5396256Z ##[group]Fetching the repository
+2025-09-12T03:02:38.5414805Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +5eb3d9ebb638555015aec2c26e4b48723753d903:refs/remotes/origin/feature/fix-ci-deployments
+2025-09-12T03:02:39.0033943Z From https://github.com/ivanmaierg/QuakeMap
+2025-09-12T03:02:39.0035225Z  * [new ref]         5eb3d9ebb638555015aec2c26e4b48723753d903 -> origin/feature/fix-ci-deployments
+2025-09-12T03:02:39.0065731Z ##[endgroup]
+2025-09-12T03:02:39.0066594Z ##[group]Determining the checkout info
+2025-09-12T03:02:39.0067935Z ##[endgroup]
+2025-09-12T03:02:39.0072871Z [command]/usr/bin/git sparse-checkout disable
+2025-09-12T03:02:39.0114545Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-09-12T03:02:39.0146917Z ##[group]Checking out the ref
+2025-09-12T03:02:39.0151298Z [command]/usr/bin/git checkout --progress --force -B feature/fix-ci-deployments refs/remotes/origin/feature/fix-ci-deployments
+2025-09-12T03:02:39.0273607Z Switched to a new branch 'feature/fix-ci-deployments'
+2025-09-12T03:02:39.0275584Z branch 'feature/fix-ci-deployments' set up to track 'origin/feature/fix-ci-deployments'.
+2025-09-12T03:02:39.0280453Z ##[endgroup]
+2025-09-12T03:02:39.0319660Z [command]/usr/bin/git log -1 --format=%H
+2025-09-12T03:02:39.0343790Z 5eb3d9ebb638555015aec2c26e4b48723753d903

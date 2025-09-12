@@ -1,0 +1,28 @@
+﻿2025-09-12T03:03:12.8226410Z ##[group]Run cd apps/api && pnpm wrangler deploy --env development
+2025-09-12T03:03:12.8226910Z [36;1mcd apps/api && pnpm wrangler deploy --env development[0m
+2025-09-12T03:03:12.8257596Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:03:12.8257855Z env:
+2025-09-12T03:03:12.8258099Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:03:12.8258961Z   CLOUDFLARE_API_TOKEN: ***
+2025-09-12T03:03:12.8259303Z   CLOUDFLARE_ACCOUNT_ID: ***
+2025-09-12T03:03:12.8260097Z   DATABASE_URL: ***
+2025-09-12T03:03:12.8260302Z ##[endgroup]
+2025-09-12T03:03:14.6461678Z 
+2025-09-12T03:03:14.6462943Z  ⛅️ wrangler 4.34.0 (update available 4.35.0)
+2025-09-12T03:03:14.6463813Z ─────────────────────────────────────────────
+2025-09-12T03:03:15.2718450Z Total Upload: 1005.27 KiB / gzip: 176.43 KiB
+2025-09-12T03:03:17.3777363Z Worker Startup Time: 54 ms
+2025-09-12T03:03:17.3787059Z Your Worker has access to the following bindings:
+2025-09-12T03:03:17.3787988Z Binding                                                            Resource                  
+2025-09-12T03:03:17.3789070Z env.DATABASE_URL ("")                                              Environment Variable      
+2025-09-12T03:03:17.3790143Z env.ENVIRONMENT ("development")                                    Environment Variable      
+2025-09-12T03:03:17.3791310Z env.PROJECT_NAME ("QuakeMap API Dev")                              Environment Variable      
+2025-09-12T03:03:17.3792808Z env.USGS_API_URL ("https://earthquake.usgs.gov/earthquak...")      Environment Variable      
+2025-09-12T03:03:17.3794363Z env.CORS_ORIGINS ("http://localhost:5173,http://localhos...")      Environment Variable      
+2025-09-12T03:03:17.3794996Z 
+2025-09-12T03:03:17.3810769Z Uploaded quake-map-api-dev (2.44 sec)
+2025-09-12T03:03:18.0078098Z Deployed quake-map-api-dev triggers (0.63 sec)
+2025-09-12T03:03:18.0079058Z   ***
+2025-09-12T03:03:18.0079604Z Current Version ID: edd20d85-311f-465f-b043-a3bd0df687cb
+2025-09-12T03:03:18.0109792Z 
+2025-09-12T03:03:18.0110886Z Cloudflare collects anonymous telemetry about your usage of Wrangler. Learn more at https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md

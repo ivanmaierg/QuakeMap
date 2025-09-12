@@ -1,0 +1,10 @@
+﻿2025-09-12T03:02:56.4328782Z ##[group]Run cd apps/api && pnpm build
+2025-09-12T03:02:56.4329147Z [36;1mcd apps/api && pnpm build[0m
+2025-09-12T03:02:56.4359103Z shell: /usr/bin/bash -e {0}
+2025-09-12T03:02:56.4359354Z env:
+2025-09-12T03:02:56.4359606Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:56.4359921Z ##[endgroup]
+2025-09-12T03:02:56.8399206Z 
+2025-09-12T03:02:56.8400155Z > api@ build /home/runner/work/QuakeMap/QuakeMap/apps/api
+2025-09-12T03:02:56.8400679Z > tsc
+2025-09-12T03:02:56.8400814Z 

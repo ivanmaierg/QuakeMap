@@ -1,0 +1,26 @@
+﻿2025-09-12T03:02:40.7910531Z ##[group]Run actions/setup-node@v4
+2025-09-12T03:02:40.7911936Z with:
+2025-09-12T03:02:40.7913311Z   node-version: 20
+2025-09-12T03:02:40.7914351Z   cache: pnpm
+2025-09-12T03:02:40.7915424Z   always-auth: false
+2025-09-12T03:02:40.7916502Z   check-latest: false
+2025-09-12T03:02:40.7917853Z   token: ***
+2025-09-12T03:02:40.7918932Z env:
+2025-09-12T03:02:40.7920057Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2025-09-12T03:02:40.7921515Z ##[endgroup]
+2025-09-12T03:02:40.9825936Z Found in cache @ /opt/hostedtoolcache/node/20.19.5/x64
+2025-09-12T03:02:40.9834338Z ##[group]Environment details
+2025-09-12T03:02:43.7916433Z node: v20.19.5
+2025-09-12T03:02:43.7916998Z npm: 10.8.2
+2025-09-12T03:02:43.7917264Z yarn: 1.22.22
+2025-09-12T03:02:43.7917994Z ##[endgroup]
+2025-09-12T03:02:43.7946781Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2025-09-12T03:02:44.3594018Z /home/runner/setup-pnpm/node_modules/.bin/store/v3
+2025-09-12T03:02:44.6901086Z Cache hit for: node-cache-Linux-x64-pnpm-148296499a7ccf7c7cb5b4b0cb173791c2ed9fa5f856c8bad733eca58707cd71
+2025-09-12T03:02:46.0247852Z Received 4194304 of 139246344 (3.0%), 4.0 MBs/sec
+2025-09-12T03:02:47.0256083Z Received 117440512 of 139246344 (84.3%), 56.0 MBs/sec
+2025-09-12T03:02:47.4271321Z Received 139246344 of 139246344 (100.0%), 55.3 MBs/sec
+2025-09-12T03:02:47.4273078Z Cache Size: ~133 MB (139246344 B)
+2025-09-12T03:02:47.4314205Z [command]/usr/bin/tar -xf /home/runner/work/_temp/6ba442e2-6dcb-4e9c-ae95-7c79860e81cd/cache.tzst -P -C /home/runner/work/QuakeMap/QuakeMap --use-compress-program unzstd
+2025-09-12T03:02:48.8215147Z Cache restored successfully
+2025-09-12T03:02:48.8500027Z Cache restored from key: node-cache-Linux-x64-pnpm-148296499a7ccf7c7cb5b4b0cb173791c2ed9fa5f856c8bad733eca58707cd71
