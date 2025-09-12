@@ -14,7 +14,7 @@ name = "quake-map-api-dev"
 ENVIRONMENT = "development"
 PROJECT_NAME = "QuakeMap API Dev"
 USGS_API_URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
-CORS_ORIGINS = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173"
+CORS_ORIGINS = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,https://quake-map-web-dev.ivanmaierg99.workers.dev"
 
 [env.production]
 name = "quake-map-api"
