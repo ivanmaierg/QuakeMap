@@ -1,14 +1,14 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { env } from '$env/dynamic/private';
 
-export const GET: RequestHandler = async ({ url, fetch }) => {
+export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 	try {
 		// Get query parameters from the request
 		const searchParams = url.searchParams;
 		
 		// Forward the request to the backend API
-		const baseUrl = env.API_URL || 'http://localhost:8787';
+		// In Cloudflare Workers, secrets are available via platform.env
+		const baseUrl = platform?.env?.API_URL || 'http://localhost:8787';
 		const apiUrl = new URL('/api/quakes', baseUrl);
 		
 		// Copy all query parameters to the API request
@@ -18,6 +18,8 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 
 		console.log('🌐 Web app proxy - API_URL:', baseUrl);
 		console.log('🌐 Web app proxy - Full API URL:', apiUrl.toString());
+		console.log('🌐 Web app proxy - Platform env keys:', Object.keys(platform?.env || {}));
+		console.log('🌐 Web app proxy - Platform env API_URL:', platform?.env?.API_URL);
 
 		const response = await fetch(apiUrl.toString());
 		
