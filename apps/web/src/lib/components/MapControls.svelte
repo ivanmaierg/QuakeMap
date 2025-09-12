@@ -8,7 +8,7 @@
 		earthquakeStore: EarthquakeFeatureCollection;
 	}
 
-	const { projection, onToggleProjection, onRefreshData, earthquakeStore }: Props = $props();
+	const { onToggleProjection, onRefreshData, earthquakeStore }: Props = $props();
 </script>
 
 <div class="absolute top-4 right-4 z-10 flex flex-col gap-2">

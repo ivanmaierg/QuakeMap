@@ -27,7 +27,7 @@ earthquakeRoutes.get('/', async (c) => {
 
     const response = {
       type: 'FeatureCollection' as const,
-      features: earthquakes.map(quake => ({
+      features: earthquakes.map((quake: any) => ({
         type: 'Feature' as const,
         id: quake.usgsId,
         properties: {
@@ -114,7 +114,7 @@ earthquakeRoutes.get('/:id', async (c) => {
 
     const db = getDatabase(c);
     const earthquakes = await getEarthquakesWithDb(db, { limit: 1000 });
-    const earthquake = earthquakes.find(q => q.id === id);
+    const earthquake = earthquakes.find((q: any) => q.id === id);
 
     if (!earthquake) {
       return c.json({ error: 'Earthquake not found' }, 404);

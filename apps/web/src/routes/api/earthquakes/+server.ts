@@ -9,7 +9,7 @@ export const GET: RequestHandler = async ({ url, fetch }) => {
 		
 		// Forward the request to the backend API
 		const baseUrl = env.API_URL || 'http://localhost:8787';
-		const apiUrl = new URL('/earthquakes', baseUrl);
+		const apiUrl = new URL('/api/quakes', baseUrl);
 		
 		// Copy all query parameters to the API request
 		searchParams.forEach((value, key) => {

@@ -33,9 +33,9 @@ describe('Earthquakes GET endpoints', () => {
     entities = await db.seed();
   });
 
-  describe('GET /earthquakes', () => {
+  describe('GET /api/quakes', () => {
     it('should respond with 200 and return earthquake data', async () => {
-      const res = await app.request('/earthquakes', {
+      const res = await app.request('/api/quakes', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should filter by minimum magnitude', async () => {
-      const res = await app.request('/earthquakes?minMagnitude=4.0', {
+      const res = await app.request('/api/quakes?minMagnitude=4.0', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should filter by maximum magnitude', async () => {
-      const res = await app.request('/earthquakes?maxMagnitude=4.0', {
+      const res = await app.request('/api/quakes?maxMagnitude=4.0', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should filter by magnitude range', async () => {
-      const res = await app.request('/earthquakes?minMagnitude=4.0&maxMagnitude=5.0', {
+      const res = await app.request('/api/quakes?minMagnitude=4.0&maxMagnitude=5.0', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should limit results', async () => {
-      const res = await app.request('/earthquakes?limit=2', {
+      const res = await app.request('/api/quakes?limit=2', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ describe('Earthquakes GET endpoints', () => {
       const startDate = '2024-01-15T00:00:00Z';
       const endDate = '2024-01-16T23:59:59Z';
       
-      const res = await app.request(`/earthquakes?startDate=${startDate}&endDate=${endDate}`, {
+      const res = await app.request(`/api/quakes?startDate=${startDate}&endDate=${endDate}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -133,7 +133,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should handle invalid query parameters gracefully', async () => {
-      const res = await app.request('/earthquakes?minMagnitude=invalid', {
+      const res = await app.request('/api/quakes?minMagnitude=invalid', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -146,9 +146,9 @@ describe('Earthquakes GET endpoints', () => {
     });
   });
 
-  describe('GET /earthquakes/stats', () => {
+  describe('GET /api/quakes/stats', () => {
     it('should respond with 200 and return statistics', async () => {
-      const res = await app.request('/earthquakes/stats', {
+      const res = await app.request('/api/quakes/stats', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -168,10 +168,10 @@ describe('Earthquakes GET endpoints', () => {
     });
   });
 
-  describe('GET /earthquakes/{id}', () => {
+  describe('GET /api/quakes/{id}', () => {
     it('should respond with 200 and return specific earthquake', async () => {
       const earthquakeId = entities.earthquakes[0].id;
-      const res = await app.request(`/earthquakes/${earthquakeId}`, {
+      const res = await app.request(`/api/quakes/${earthquakeId}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should respond with 404 for non-existent earthquake', async () => {
-      const res = await app.request('/earthquakes/99999', {
+      const res = await app.request('/api/quakes/99999', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ describe('Earthquakes GET endpoints', () => {
     });
 
     it('should respond with 400 for invalid earthquake ID', async () => {
-      const res = await app.request('/earthquakes/invalid', {
+      const res = await app.request('/api/quakes/invalid', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
