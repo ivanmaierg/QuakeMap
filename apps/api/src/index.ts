@@ -1,5 +1,4 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
-import { swaggerUI } from '@hono/swagger-ui';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
 import { prettyJSON } from 'hono/pretty-json';
@@ -17,7 +16,7 @@ const app = new OpenAPIHono<Env>();
 
 // Create event emitter (simplified for now)
 const emitter = {
-  on: (event: string, _handler: Function) => {
+  on: (event: string) => {
     console.log(`📡 Event listener registered: ${event}`);
   },
   emit: (event: string, data: any) => {
