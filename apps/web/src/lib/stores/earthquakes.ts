@@ -87,7 +87,7 @@ const createEarthquakeStore = () => {
 				params.append('limit', filters.limit.toString());
 			}
 
-			const response = await fetch(`/api/earthquakes?${params.toString()}`);
+			const response = await fetch(`/api/quakes?${params.toString()}`);
 			
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
