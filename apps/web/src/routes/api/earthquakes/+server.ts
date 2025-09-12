@@ -7,8 +7,8 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 		const searchParams = url.searchParams;
 		
 		// Forward the request to the backend API
-		// In Cloudflare Workers, secrets are available via platform.env
-		const baseUrl = platform?.env?.API_URL || 'http://localhost:8787';
+		// Temporarily hardcode the API URL to test the proxy
+		const baseUrl = 'https://quake-map-api-dev.ivanmaierg99.workers.dev';
 		const apiUrl = new URL('/api/quakes', baseUrl);
 		
 		// Copy all query parameters to the API request
