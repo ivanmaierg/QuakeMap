@@ -75,14 +75,14 @@ jobs:
       
       - name: Deploy API to Development
         if: github.ref == 'refs/heads/main'
-        run: cd apps/api && pnpm wrangler deploy --env development --var DATABASE_URL="${{ secrets.DATABASE_URL_DEV }}"
+        run: cd apps/api && pnpm wrangler deploy --env development --var "DATABASE_URL=${{ secrets.DATABASE_URL_DEV }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       
       - name: Deploy API to Production
         if: github.ref == 'refs/heads/production'
-        run: cd apps/api && pnpm wrangler deploy --env production --var DATABASE_URL="${{ secrets.DATABASE_URL_PROD }}"
+        run: cd apps/api && pnpm wrangler deploy --env production --var "DATABASE_URL=${{ secrets.DATABASE_URL_PROD }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -156,7 +156,7 @@ jobs:
         run: cd apps/web && pnpm build
 
       - name: Deploy API to Feature Branch
-        run: cd apps/api && pnpm wrangler deploy --env development --var DATABASE_URL="${{ secrets.DATABASE_URL_DEV }}"
+        run: cd apps/api && pnpm wrangler deploy --env development --var "DATABASE_URL=${{ secrets.DATABASE_URL_DEV }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
