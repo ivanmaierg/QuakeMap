@@ -1,0 +1,136 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*.*.*'
+    paths-ignore:
+      - '**/*.md'
+      - '**/README.md'
+
+concurrency:
+  group: deploy-production-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+jobs:
+  build:
+    name: Build monorepo
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      web_changed: ${{ steps.filter.outputs.web }}
+      api_changed: ${{ steps.filter.outputs.api }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Determine changed workspaces
+        id: filter
+        run: |
+          echo "web=false" >> $GITHUB_OUTPUT
+          echo "api=false" >> $GITHUB_OUTPUT
+          if git diff --name-only HEAD~1 | grep -q '^apps/web/'; then echo "web=true" >> $GITHUB_OUTPUT; fi
+          if git diff --name-only HEAD~1 | grep -q '^apps/api/'; then echo "api=true" >> $GITHUB_OUTPUT; fi
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck (web)
+        if: steps.filter.outputs.web == 'true'
+        working-directory: apps/web
+        run: pnpm run check
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+
+  deploy-api:
+    name: Deploy API (production)
+    needs: build
+    if: needs.build.outputs.api_changed == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish API to Cloudflare (production env)
+        working-directory: apps/api
+        run: pnpm deploy:prod
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+  deploy-web:
+    name: Deploy Web (production)
+    needs: build
+    if: needs.build.outputs.web_changed == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Publish Web to Cloudflare (production env)
+        working-directory: apps/web
+        run: pnpm deploy:prod
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+
