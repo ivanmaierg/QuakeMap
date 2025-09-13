@@ -6,9 +6,13 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 		// Get query parameters from the request
 		const searchParams = url.searchParams;
 		
-		// Forward the request to the backend API
-		// Temporarily hardcode the API URL to test the proxy
-		const baseUrl = 'https://quake-map-api-dev.ivanmaierg99.workers.dev';
+		// Get API URL from environment variable
+		const baseUrl = platform?.env?.API_URL || process.env.API_URL;
+		
+		if (!baseUrl) {
+			throw new Error('API_URL environment variable is not configured');
+		}
+		
 		const apiUrl = new URL('/api/quakes', baseUrl);
 		
 		// Copy all query parameters to the API request
