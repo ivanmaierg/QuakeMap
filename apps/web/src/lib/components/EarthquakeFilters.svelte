@@ -14,7 +14,7 @@
 	let isExpanded = $state(false);
 
 	const handleApplyFilters = () => {
-		console.log('Applying filters:', filters);
+		// Removed debug log
 		earthquakes.fetchEarthquakes(filters);
 	};
 

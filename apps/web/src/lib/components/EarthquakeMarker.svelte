@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Marker from 'svelte-maplibre/Marker.svelte';
+	import { Marker } from 'svelte-maplibre';
 	import type { EarthquakeFeature } from '$lib/stores/earthquakes';
 	import { getMagnitudeColor, getMagnitudeSize } from '$lib/utils/earthquake';
 

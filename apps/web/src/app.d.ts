@@ -6,7 +6,13 @@ declare global {
 		// interface Locals {}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
+		interface Platform {
+			env: {
+				API_URL?: string;
+				API?: Fetcher;
+				[key: string]: unknown;
+			};
+		}
 	}
 }
 

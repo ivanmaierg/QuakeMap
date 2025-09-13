@@ -1,0 +1,80 @@
+name: PR Comment Build
+
+on:
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: pr-comment-build-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate trigger and permissions
+    if: ${{ github.event.issue.pull_request != null }}
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check trigger phrase and commenter role
+        id: check
+        shell: bash
+        run: |
+          body="${{ github.event.comment.body }}"
+          assoc="${{ github.event.comment.author_association }}"
+
+          # Accept only exact phrase (case-insensitive)
+          if echo "$body" | grep -qiE '^rp build$'; then
+            triggered=true
+          else
+            triggered=false
+          fi
+
+          # Allow only org/repo members or collaborators to trigger
+          case "$assoc" in
+            OWNER|MEMBER|COLLABORATOR)
+              allowed=true
+              ;;
+            *)
+              allowed=false
+              ;;
+          esac
+
+          if [ "$triggered" = true ] && [ "$allowed" = true ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  build:
+    name: Build on demand (rp build)
+    needs: validate
+    if: needs.validate.outputs.should_run == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout PR head
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.issue.number }}/head
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+

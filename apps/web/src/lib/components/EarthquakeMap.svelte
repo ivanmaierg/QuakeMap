@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MapLibre from 'svelte-maplibre/MapLibre.svelte';
+	import { MapLibre } from 'svelte-maplibre';
 	import { onMount } from 'svelte';
 	import { earthquakes } from '$lib/stores/earthquakes';
 	import type { EarthquakeFeature } from '$lib/stores/earthquakes';
@@ -13,6 +13,8 @@
 	let projection = $state('globe');
 	let earthquakeData = $derived($earthquakes);
 	let selectedEarthquake = $state<EarthquakeFeature | null>(null);
+	let isLoading = $derived($earthquakes.loading);
+	let errorMessage = $derived($earthquakes.error);
 
 	const handleToggleProjection = () => {
 		projection = projection === 'globe' ? 'mercator' : 'globe';
@@ -43,12 +45,12 @@
 		earthquakeStore={earthquakeData}
 	/>
 
-	{#if $earthquakes.loading}
+	{#if isLoading}
 		<LoadingIndicator />
 	{/if}
 
-	{#if $earthquakes.error}
-		<ErrorMessage error={$earthquakes.error} />
+	{#if errorMessage}
+		<ErrorMessage error={errorMessage} />
 	{/if}
 
 	<MapLibre
