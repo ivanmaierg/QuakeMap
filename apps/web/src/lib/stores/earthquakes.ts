@@ -37,6 +37,8 @@ export interface EarthquakeFeature {
 }
 
 export interface EarthquakeFeatureCollection {
+  loading: any;
+  error: any;
 	type: 'FeatureCollection';
 	features: EarthquakeFeature[];
 	metadata: {
