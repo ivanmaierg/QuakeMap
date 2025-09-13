@@ -9,7 +9,8 @@ declare global {
 		interface Platform {
 			env: {
 				API_URL?: string;
-				[key: string]: string | undefined;
+				API?: Fetcher;
+				[key: string]: unknown;
 			};
 		}
 	}

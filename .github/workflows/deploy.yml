@@ -126,7 +126,7 @@ jobs:
       
       - name: Deploy Web to Development
         if: github.ref == 'refs/heads/main'
-        run: cd apps/web && pnpm deploy:dev
+        run: cd apps/web && pnpm wrangler deploy --env development --var API_URL="${{ secrets.API_URL_DEV }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -134,7 +134,7 @@ jobs:
       
       - name: Deploy Web to Production
         if: github.ref == 'refs/heads/production'
-        run: cd apps/web && pnpm deploy:prod
+        run: cd apps/web && pnpm wrangler deploy --env production --var API_URL="${{ secrets.API_URL_PROD }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -182,7 +182,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Web to Feature Branch
-        run: cd apps/web && pnpm deploy:dev
+        run: cd apps/web && pnpm wrangler deploy --env development --var API_URL="${{ secrets.API_URL_DEV }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

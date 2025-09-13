@@ -94,7 +94,7 @@ const createEarthquakeStore = () => {
 			}
 
 			const data: EarthquakeFeatureCollection = await response.json();
-			console.log('Fetched earthquake data:', data);
+			// Removed debug log
 			set(data);
 		} catch (err) {
 			const errorMessage = err instanceof Error ? err.message : 'Failed to fetch earthquakes';

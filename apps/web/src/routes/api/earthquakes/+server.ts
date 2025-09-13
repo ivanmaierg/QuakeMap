@@ -1,4 +1,5 @@
 import { json } from '@sveltejs/kit';
+import { env } from '$env/dynamic/private';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url, fetch, platform }) => {
@@ -7,7 +8,16 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 		const searchParams = url.searchParams;
 		
 		// Get API URL from environment variable
-		const baseUrl = platform?.env?.API_URL || process.env.API_URL;
+		// In Cloudflare Workers, use platform.env.API_URL
+		// In local development, use env.API_URL
+		let baseUrl = platform?.env?.API_URL;
+		if (!baseUrl) {
+			try {
+				baseUrl = env.API_URL;
+			} catch (e) {
+				// env might not be available in Cloudflare Workers
+			}
+		}
 		
 		if (!baseUrl) {
 			throw new Error('API_URL environment variable is not configured');
@@ -20,19 +30,17 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 			apiUrl.searchParams.set(key, value);
 		});
 
-		console.log('🌐 Web app proxy - API_URL:', baseUrl);
-		console.log('🌐 Web app proxy - Full API URL:', apiUrl.toString());
-		console.log('🌐 Web app proxy - Platform env keys:', Object.keys(platform?.env || {}));
-		console.log('🌐 Web app proxy - Platform env API_URL:', platform?.env?.API_URL);
+		// Debug logging removed for production
 
-		const response = await fetch(apiUrl.toString(), {
-			headers: {
-				'Origin': 'https://quake-map-web-dev.ivanmaierg99.workers.dev'
-			}
-		});
+		// Prefer Cloudflare Service Binding when available to avoid external HTTP
+		const apiBinding = (platform as any)?.API || (platform as any)?.env?.API;
+		const useService = apiBinding && typeof apiBinding.fetch === 'function';
+		const upstreamFetch = useService ? apiBinding.fetch.bind(apiBinding) : fetch;
+		const response = await upstreamFetch(apiUrl.toString());
 		
 		if (!response.ok) {
-			throw new Error(`API request failed: ${response.status}`);
+			const errorBody = await response.text().catch(() => '');
+			throw new Error(`API request failed: ${response.status} -> ${apiUrl.toString()} :: ${errorBody?.slice(0,200)}`);
 		}
 
 		const data = await response.json();

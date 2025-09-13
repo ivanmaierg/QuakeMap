@@ -13,8 +13,16 @@ name = "quake-map-web-dev"
 [env.development.vars]
 API_URL = "https://quake-map-api-dev.ivanmaierg99.workers.dev"
 
+[[env.development.services]]
+binding = "API"
+service = "quake-map-api-dev"
+
 [env.production]
 name = "quake-map-web"
 
 [env.production.vars]
 API_URL = "https://quake-map-api.ivanmaierg99.workers.dev"
+
+[[env.production.services]]
+binding = "API"
+service = "quake-map-api"
