@@ -125,11 +125,18 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Build web (SvelteKit)
+        working-directory: apps/web
+        run: pnpm build
+        env:
+          API_URL: ${{ secrets.API_URL_DEV }}
+
       - name: Publish Web to Cloudflare (development env)
         working-directory: apps/web
         run: pnpm deploy:dev
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          API_URL: ${{ secrets.API_URL_DEV }}
 
 
