@@ -7,35 +7,44 @@ export const GET: RequestHandler = async ({ url, fetch, platform }) => {
 		// Get query parameters from the request
 		const searchParams = url.searchParams;
 		
-		// Get API URL from environment variable
-		// In Cloudflare Workers, use platform.env.API_URL
-		// In local development, use env.API_URL
-		let baseUrl = platform?.env?.API_URL;
-		if (!baseUrl) {
-			try {
-				baseUrl = env.API_URL;
-			} catch (e) {
-				// env might not be available in Cloudflare Workers
+		// Prefer Cloudflare Service Binding when available to avoid external HTTP
+		const apiBinding = (platform as any)?.API || (platform as any)?.env?.API;
+		const useService = apiBinding && typeof apiBinding.fetch === 'function';
+		
+		let apiUrl: URL;
+		let upstreamFetch: typeof fetch;
+		
+		if (useService) {
+			// Use service binding - no need for external URL
+			console.log('🔗 Using service binding for API call');
+			apiUrl = new URL('/api/quakes', 'http://internal');
+			upstreamFetch = apiBinding.fetch.bind(apiBinding);
+		} else {
+			// Fallback to external API URL
+			console.log('🌐 Using external API URL (no service binding available)');
+			let baseUrl = platform?.env?.API_URL;
+			if (!baseUrl) {
+				try {
+					baseUrl = env.API_URL;
+				} catch (e) {
+					// env might not be available in Cloudflare Workers
+				}
 			}
+			
+			if (!baseUrl) {
+				throw new Error('API_URL environment variable is not configured and service binding not available');
+			}
+			
+			console.log('🌐 Using API URL:', baseUrl);
+			apiUrl = new URL('/api/quakes', baseUrl);
+			upstreamFetch = fetch;
 		}
-		
-		if (!baseUrl) {
-			throw new Error('API_URL environment variable is not configured');
-		}
-		
-		const apiUrl = new URL('/api/quakes', baseUrl);
 		
 		// Copy all query parameters to the API request
 		searchParams.forEach((value, key) => {
 			apiUrl.searchParams.set(key, value);
 		});
 
-		// Debug logging removed for production
-
-		// Prefer Cloudflare Service Binding when available to avoid external HTTP
-		const apiBinding = (platform as any)?.API || (platform as any)?.env?.API;
-		const useService = apiBinding && typeof apiBinding.fetch === 'function';
-		const upstreamFetch = useService ? apiBinding.fetch.bind(apiBinding) : fetch;
 		const response = await upstreamFetch(apiUrl.toString());
 		
 		if (!response.ok) {
